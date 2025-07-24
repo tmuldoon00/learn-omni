@@ -1,92 +1,42 @@
-# Contributing to LearnOmni
+# Contributing to LearnOmni.org
 
-Thank you for your interest in contributing to LearnOmni! This project is community-driven and thrives on contributions from learners, educators, and analytics professionals worldwide.
+Thank you for your interest in contributing to LearnOmni! This project is community-driven and thrives on contributions from learners, educators, developers, and analytics professionals worldwide.
 
 ## 🌟 Ways to Contribute
 
-### Content Contributions
-- **Enhance lessons**: Improve existing lesson content, add examples, or fix errors
-- **Create new lessons**: Write lessons for existing chapters
-- **Add exercises**: Create practice problems and real-world scenarios
-- **Improve explanations**: Make complex concepts more accessible
-- **Add translations**: Help make content available in other languages
+### 📝 Content Contributions
+- **Enhance existing lessons**: Improve explanations, add examples, fix errors
+- **Create new content**: Write additional lessons or reference materials
+- **Add practical exercises**: Create hands-on activities and real-world scenarios
+- **Improve examples**: Add business use cases and industry applications
+- **Update documentation**: Keep guides and instructions current
 
-### Technical Contributions
-- **Bug fixes**: Fix issues with the platform
-- **Feature development**: Add new functionality
+### 💻 Technical Contributions
+- **Bug fixes**: Resolve issues with the platform functionality
+- **Feature development**: Add new capabilities to enhance learning
 - **Performance improvements**: Optimize loading times and user experience
-- **Accessibility**: Improve accessibility for all users
+- **Accessibility**: Make the platform usable for everyone
+- **Mobile optimization**: Improve mobile experience and responsiveness
 
-### Community Contributions
-- **Documentation**: Improve setup guides and documentation
-- **Code reviews**: Review pull requests from other contributors
-- **Issue triage**: Help organize and prioritize issues
-- **Community support**: Help other learners in discussions
-
-## 📋 Content Guidelines
-
-### Writing Style
-- **Clear and concise**: Use simple language that beginners can understand
-- **Progressive learning**: Build on concepts from previous lessons
-- **Practical examples**: Include real-world use cases and examples
-- **Visual aids**: Add diagrams, screenshots, or charts when helpful
-
-### Content Structure
-Each lesson should follow this structure:
-```markdown
----
-title: "Lesson Title"
-videoId: "youtube-video-id"
-duration: "X min"
-order: N
-description: "Brief lesson description"
----
-
-# Lesson Title
-
-Brief introduction explaining what the lesson covers.
-
-> 🎥 **Watch the video above** for the main explanation, then continue with enhanced content below.
-
-## Main Content Sections
-
-### Key Concepts
-- Bullet points with main ideas
-- Clear definitions
-- Examples
-
-### Real-World Applications
-- Practical use cases
-- Industry examples
-- Best practices
-
-## Key Takeaways
-✅ Summary points
-✅ Main concepts learned
-✅ Skills acquired
-
----
-
-## Next Steps
-Link to the next lesson or related content.
-
----
-
-*Want to improve this lesson? [Contribute on GitHub →](https://github.com/yourusername/learnomni)*
-
-### Code Examples
-- Use proper syntax highlighting
-- Include comments explaining complex parts
-- Provide working examples when possible
-- Test all code before submitting
+### 🎨 Design & UX Contributions
+- **UI improvements**: Enhance the visual design and user interface
+- **UX research**: Gather feedback and suggest user experience improvements
+- **Component design**: Create reusable UI components
+- **Design system**: Maintain consistency across the platform
 
 ## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ installed
+- Git for version control
+- Basic familiarity with Markdown (for content contributions)
+- React/Next.js knowledge (for code contributions)
 
 ### 1. Fork and Clone
 ```bash
 # Fork the repository on GitHub, then:
-git clone https://github.com/YOUR-USERNAME/learnomni.git
-cd learnomni
+git clone https://github.com/YOUR-USERNAME/learn-omni.git
+cd learn-omni
 ```
 
 ### 2. Set Up Development Environment
@@ -94,150 +44,352 @@ cd learnomni
 # Install dependencies
 npm install
 
-# Copy environment template
-cp .env.example .env.local
-
 # Start development server
 npm run dev
 ```
 
-### 3. Create Content
-```bash
-# Add a new lesson
-npm run add-lesson --chapter=01-introduction --title="New Lesson Title"
+### 3. Verify Setup
+Visit `http://localhost:3000` to ensure everything is working correctly.
 
-# Add a new chapter
-npm run add-chapter --title="New Chapter Title"
+## 📚 Content Contribution Guidelines
+
+### Content Structure
+Our content follows a structured approach:
+
+#### Chapter Structure
+```json
+{
+  "id": "chapter-id",
+  "title": "Chapter Title",
+  "description": "Brief chapter description",
+  "order": 1,
+  "lessons": [...]
+}
 ```
 
-## 📝 Submission Process
+#### Lesson Structure
+```markdown
+---
+title: "Lesson Title"
+videoId: "youtube-video-id"
+duration: "X min"
+videoMinutes: X
+order: N
+description: "Brief lesson description"
+---
+
+# Lesson Title
+
+Brief introduction explaining the lesson's purpose...
+
+## Key Concepts
+- Main learning objectives
+- Important definitions
+- Core principles
+
+## Real-World Applications
+- Business scenarios
+- Industry examples
+- Practical use cases
+
+## Key Takeaways
+✅ Summary points
+✅ Main concepts learned
+✅ Skills acquired
+```
+
+### Writing Style Guidelines
+- **Clear and accessible**: Use language that beginners can understand
+- **Progressive complexity**: Build on concepts from previous lessons
+- **Practical focus**: Include real-world examples and applications
+- **Consistent structure**: Follow the established lesson template
+- **Proper grammar**: Use tools like Grammarly to ensure quality
+
+### Content Categories
+1. **Getting Started** 🚀 - Platform introduction and basics
+2. **Dashboards & Visualization** 📊 - Creating charts and dashboards
+3. **Business Applications** 💼 - Real-world use cases
+4. **Advanced Features** ⚡ - Complex functionality and integrations
+
+## 💻 Code Contribution Guidelines
+
+### Development Workflow
+1. **Create a branch**: `git checkout -b feature/your-feature-name`
+2. **Make changes**: Follow existing code patterns and conventions
+3. **Test thoroughly**: Ensure all functionality works (`npm run build`)
+4. **Commit changes**: Use descriptive commit messages
+5. **Submit PR**: Include clear description of changes
+
+### Code Standards
+- **TypeScript**: Use proper typing for all functions and components
+- **ESLint**: Fix all linting errors before submitting
+- **Component structure**: Follow existing patterns in `/src/components`
+- **File organization**: Place files in appropriate directories
+- **Performance**: Optimize for loading speed and user experience
+
+### Technical Stack
+- **Next.js 15**: App Router with Server and Client Components
+- **TypeScript**: Full type safety throughout the application
+- **Tailwind CSS**: Utility-first styling with custom design system
+- **React Markdown**: For rendering lesson content
+- **Lucide React**: Consistent iconography
+
+## 🔧 Using Content Management Scripts
+
+### Adding New Content
+```bash
+# Add a new chapter (interactive prompts)
+npm run add-chapter
+
+# Add a lesson to existing chapter (interactive prompts)
+npm run add-lesson
+
+# Validate all content for issues
+npm run audit-content
+```
+
+### Content Validation
+Before submitting content contributions:
+1. Run `npm run audit-content` to check for issues
+2. Test locally with `npm run dev`
+3. Verify all links work and videos load
+4. Check spelling and grammar
+
+## 🎯 Priority Contributions
+
+### High Priority
+- **Enhanced lesson explanations** with more detail and examples
+- **Interactive exercises** and hands-on activities
+- **Bug fixes** affecting user experience
+- **Mobile responsiveness** improvements
+- **Search functionality** enhancements
+
+### Medium Priority
+- **New lesson content** expanding existing chapters
+- **Performance optimizations** for faster loading
+- **Accessibility improvements** (ARIA labels, keyboard navigation)
+- **Visual design enhancements** following design system
+
+### Future Features
+- **User account system** with progress tracking
+- **Interactive quizzes** for each lesson
+- **Discussion forums** for community interaction
+- **Learning analytics** dashboard
+- **Mobile app** development
+
+## 📋 Submission Process
 
 ### For Content Changes
-1. **Create a branch**: `git checkout -b enhance/lesson-analytics-basics`
-2. **Make your changes**: Edit markdown files in the `content/` directory
-3. **Preview locally**: Run `npm run dev` to see your changes
-4. **Commit changes**: Use descriptive commit messages
-5. **Submit PR**: Include a clear description of your changes
+1. **Create a descriptive branch**: `git checkout -b content/improve-dashboard-lesson`
+2. **Edit markdown files**: Modify files in `content/chapters/`
+3. **Test locally**: Preview changes with `npm run dev`
+4. **Validate content**: Run `npm run audit-content`
+5. **Commit with clear message**: `git commit -m "Improve dashboard creation lesson with more examples"`
+6. **Submit PR**: Include description of improvements and rationale
 
 ### For Code Changes
-1. **Create a branch**: `git checkout -b feature/new-feature-name`
-2. **Make changes**: Follow existing code style and patterns
-3. **Test thoroughly**: Ensure all features work correctly
-4. **Submit PR**: Include tests if applicable
+1. **Create a feature branch**: `git checkout -b feature/search-improvements`
+2. **Implement changes**: Follow existing patterns and conventions
+3. **Test thoroughly**: Run `npm run build` and manual testing
+4. **Check linting**: Fix any ESLint errors
+5. **Update documentation**: Add comments and update README if needed
+6. **Submit PR**: Include technical details and testing instructions
+
+## 🔍 Pull Request Guidelines
+
+### PR Title Format
+- **Content**: `Content: Improve lesson on data modeling with examples`
+- **Feature**: `Feature: Add bookmark functionality for lessons`
+- **Bug fix**: `Fix: Resolve search results highlighting issue`
+- **Documentation**: `Docs: Update contributing guidelines`
+
+### PR Description Template
+```markdown
+## Description
+Brief summary of changes made.
+
+## Type of Change
+- [ ] Content improvement/addition
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Documentation update
+- [ ] Performance improvement
+
+## Testing
+- [ ] Tested locally with `npm run dev`
+- [ ] Verified build works with `npm run build`
+- [ ] Checked all links and functionality
+- [ ] Validated content with audit script
+
+## Screenshots (if applicable)
+Add screenshots showing the changes.
+
+## Additional Notes
+Any additional context or considerations.
+```
 
 ## 📊 Content Review Process
 
 ### Review Criteria
-- **Technical accuracy**: Content must be factually correct
-- **Pedagogical value**: Content should enhance learning
-- **Clarity**: Writing should be clear and accessible
-- **Consistency**: Follow established style and structure
-- **Relevance**: Content should be relevant to Omni analytics
+- **Technical accuracy**: All information must be factually correct
+- **Educational value**: Content should enhance learning outcomes
+- **Clarity**: Writing should be clear and accessible to the target audience
+- **Consistency**: Follow established style and structure guidelines
+- **Completeness**: Lessons should be comprehensive and well-structured
 
 ### Review Timeline
-- **Content PRs**: Typically reviewed within 3-5 days
-- **Code PRs**: Typically reviewed within 1-3 days
-- **Documentation PRs**: Typically reviewed within 1-2 days
-
-## 🎯 Content Priorities
-
-### High Priority
-- **Foundational concepts**: Data basics, analytics fundamentals
-- **Practical examples**: Real-world Omni use cases
-- **Interactive elements**: Quizzes, exercises, hands-on activities
-- **Visual content**: Diagrams, charts, infographics
-
-### Medium Priority
-- **Advanced topics**: Complex analytics techniques
-- **Case studies**: Detailed business scenarios
-- **Tool comparisons**: How Omni compares to other platforms
-- **Industry-specific content**: Healthcare, finance, retail examples
+- **Content PRs**: Typically reviewed within 2-3 days
+- **Code PRs**: Typically reviewed within 1-2 days
+- **Documentation PRs**: Typically reviewed within 1 day
+- **Bug fixes**: Priority review, usually same day
 
 ## 🏆 Recognition
 
 ### Contributor Levels
-- **Community Contributor**: 1-5 contributions
-- **Active Contributor**: 6-15 contributions  
-- **Core Contributor**: 16+ contributions or significant impact
-- **Maintainer**: Long-term commitment to project direction
+- **First-time Contributor**: Made their first contribution
+- **Regular Contributor**: 3+ accepted contributions
+- **Active Contributor**: 10+ contributions or significant impact
+- **Core Contributor**: 25+ contributions and ongoing involvement
 
 ### Recognition Methods
-- **Contributors page**: Featured on the website
-- **GitHub profile**: Contributor stats and badges
-- **Community shoutouts**: Regular recognition in updates
-- **Mentorship opportunities**: Help guide new contributors
+- **Contributors section** in README.md
+- **GitHub contributor stats** and activity
+- **Special mention** in release notes for significant contributions
+- **Invitation to contribute** to project direction discussions
 
-## 📞 Getting Help
+## 🤝 Community Guidelines
 
-### Communication Channels
-- **GitHub Issues**: For bugs, feature requests, and discussions
-- **GitHub Discussions**: For questions and community conversations
-- **Discord**: Real-time chat with other contributors (coming soon)
-
-### Mentorship Program
-New contributors can request mentorship from experienced community members:
-- **Content mentors**: Help with writing and lesson structure
-- **Technical mentors**: Assist with code contributions
-- **Community mentors**: Guide overall contribution process
-
-## 🤝 Code of Conduct
-
-### Our Standards
-- **Be respectful**: Treat all community members with respect
-- **Be inclusive**: Welcome contributors from all backgrounds
+### Code of Conduct
+- **Be respectful**: Treat all community members with kindness and respect
+- **Be inclusive**: Welcome contributors from all backgrounds and skill levels
 - **Be constructive**: Provide helpful feedback and suggestions
 - **Be patient**: Help others learn and grow
 - **Be collaborative**: Work together towards common goals
 
-### Enforcement
-Community moderators will enforce these standards. Violations may result in temporary or permanent exclusion from the project.
+### Communication
+- **Use GitHub Issues** for bug reports and feature requests
+- **Use GitHub Discussions** for questions and community conversations
+- **Be specific** when describing issues or suggestions
+- **Provide context** for your contributions and decisions
 
-## 📋 Issue Templates
+## 🔧 Development Setup Details
 
-### Content Issues
-Use these labels:
-- `content-enhancement`: Improve existing content
-- `content-new`: Add new content
-- `content-fix`: Fix errors in content
-- `content-translation`: Translation requests
+### Project Structure
+```
+learn-omni/
+├── content/                 # Course content (markdown files)
+│   ├── chapters/           # Chapter directories
+│   ├── references/         # Reference materials
+│   └── resources/          # Additional resources
+├── src/
+│   ├── app/               # Next.js App Router pages
+│   ├── components/        # React components
+│   └── lib/               # Utility functions
+├── scripts/               # Content management scripts
+└── public/                # Static assets
+```
 
-### Technical Issues
-Use these labels:
-- `bug`: Something isn't working
-- `feature`: New feature request
-- `performance`: Performance improvements
-- `accessibility`: Accessibility improvements
+### Key Files
+- **`src/lib/content.ts`**: Content loading and management
+- **`src/lib/search.ts`**: Search functionality and algorithms
+- **`src/app/globals.css`**: Global styles and design system
+- **`tailwind.config.ts`**: Tailwind CSS configuration
 
-## 🔄 Automated Processes
+### Local Development
+```bash
+# Start development server
+npm run dev
 
-### Content Validation
-- Markdown formatting checks
-- Link validation
-- Spell checking
-- Image optimization
+# Build for production
+npm run build
 
-### Code Quality
-- ESLint for code style
-- TypeScript type checking
-- Automated testing
-- Performance monitoring
+# Run linting
+npm run lint
+
+# Validate content
+npm run audit-content
+```
 
 ## 📈 Metrics and Impact
 
-We track contribution impact through:
-- **Content quality**: User feedback and engagement
-- **Learning outcomes**: Progress tracking and completion rates
-- **Community growth**: Contributor and learner metrics
-- **Platform usage**: Analytics on lesson views and interactions
+We track the impact of contributions through:
+- **Content quality**: User engagement and completion rates
+- **Learning outcomes**: Feedback and user success stories
+- **Platform performance**: Page load times and user experience metrics
+- **Community growth**: Contributor activity and content expansion
+
+## 🆘 Getting Help
+
+### Common Issues
+- **Build errors**: Check Node.js version (18+) and run `npm install`
+- **Content validation**: Use `npm run audit-content` to identify issues
+- **Development server**: Ensure port 3000 is available or use different port
+
+### Support Channels
+- **GitHub Issues**: Technical problems and bug reports
+- **GitHub Discussions**: Questions about contributing and project direction
+- **PR comments**: Specific feedback on your contributions
+
+## 📝 Content Templates
+
+### New Lesson Template
+```markdown
+---
+title: "Your Lesson Title"
+videoId: "youtube-video-id"
+duration: "X min"
+videoMinutes: X
+order: N
+description: "Brief description of what this lesson covers"
+---
+
+# Your Lesson Title
+
+Brief introduction that sets context for the lesson...
+
+## Learning Objectives
+By the end of this lesson, you will:
+- Understand key concept A
+- Be able to perform task B
+- Know how to apply technique C
+
+## Key Concepts
+
+### Concept 1
+Explanation with examples...
+
+### Concept 2
+Explanation with examples...
+
+## Real-World Applications
+- Business scenario 1
+- Use case 2
+- Industry example 3
+
+## Hands-On Exercise
+Step-by-step exercise or challenge...
+
+## Key Takeaways
+✅ Main point 1
+✅ Main point 2
+✅ Main point 3
+
+## Next Steps
+Brief preview of the next lesson or suggested follow-up activities...
+```
 
 ---
 
 ## 🎉 Thank You!
 
-Every contribution, no matter how small, makes LearnOmni better for everyone. Your expertise and effort help thousands of learners master analytics with Omni.
+Every contribution, no matter how small, makes LearnOmni better for the entire analytics community. Your expertise and effort help thousands of learners master data analytics with Omni.
 
-**Ready to contribute?** Check out our [Good First Issues](https://github.com/yourusername/learnomni/labels/good-first-issue) or [Content Requests](https://github.com/yourusername/learnomni/labels/content-request) to get started!
+**Ready to contribute?** 
+
+- Browse [Good First Issues](https://github.com/tmuldoon00/learn-omni/labels/good-first-issue)
+- Check out [Content Requests](https://github.com/tmuldoon00/learn-omni/labels/content-request)
+- Join the conversation in [Discussions](https://github.com/tmuldoon00/learn-omni/discussions)
 
 ---
 
-*This document is itself open to contributions. Help us improve it by submitting suggestions and improvements.* 
+*This guide is a living document. Help us improve it by suggesting changes and improvements!* 

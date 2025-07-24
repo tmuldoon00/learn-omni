@@ -3,6 +3,7 @@ import { SearchBar } from '@/components/search/search-bar';
 import { SearchResults } from '@/components/search/search-results';
 import { TopicBrowser } from '@/components/search/topic-browser';
 import { getQuerySuggestions } from '@/lib/search';
+import { getAllChapters, getAllLessonsCount, getTotalCourseHours } from '@/lib/content';
 
 interface SearchPageProps {
   searchParams: Promise<{
@@ -12,6 +13,11 @@ interface SearchPageProps {
 
 function SearchPageContent({ query }: { query: string }) {
   const suggestions = getQuerySuggestions();
+  
+  // Calculate dynamic course statistics
+  const chapters = getAllChapters();
+  const totalLessons = getAllLessonsCount();
+  const totalHours = getTotalCourseHours();
   
   return (
     <div className="max-w-4xl mx-auto">
@@ -55,17 +61,17 @@ function SearchPageContent({ query }: { query: string }) {
           {/* Course Overview */}
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="text-2xl font-bold text-ka-blue mb-2">8</div>
+              <div className="text-2xl font-bold text-ka-blue mb-2">{chapters.length}</div>
               <div className="font-medium text-gray-900">Chapters</div>
               <div className="text-sm text-gray-600">Comprehensive coverage</div>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="text-2xl font-bold text-ka-blue mb-2">49</div>
+              <div className="text-2xl font-bold text-ka-blue mb-2">{totalLessons}</div>
               <div className="font-medium text-gray-900">Video Lessons</div>
               <div className="text-sm text-gray-600">Professional demos</div>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="text-2xl font-bold text-ka-blue mb-2">41.3</div>
+              <div className="text-2xl font-bold text-ka-blue mb-2">{totalHours.toFixed(1)}</div>
               <div className="font-medium text-gray-900">Hours Content</div>
               <div className="text-sm text-gray-600">In-depth learning</div>
             </div>
