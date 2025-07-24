@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getAllChapters, getAllLessonsCount, getTotalCourseHours } from '@/lib/content';
 import { BookOpen, PlayCircle, Clock, CheckCircle2, ArrowRight, Users } from 'lucide-react';
 import { SearchBar } from '@/components/search/search-bar';
+import { formatDuration } from '@/lib/utils';
 
 export default function HomePage() {
   const chapters = getAllChapters();
@@ -106,7 +107,7 @@ export default function HomePage() {
                 </p>
                 <div className="flex items-center justify-between text-xs text-gray-500">
                   <span>{chapter.lessons.length} lessons</span>
-                  <span>{chapter.estimatedHours}h</span>
+                  <span>{formatDuration(chapter.estimatedHours)}</span>
                 </div>
               </Link>
             ))}

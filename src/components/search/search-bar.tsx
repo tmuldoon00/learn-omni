@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Search, ChevronRight, Clock, BookOpen, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
 import type { SearchResult } from '@/lib/search';
+import { formatDuration } from '@/lib/utils';
 
 interface SearchBarProps {
   onSearch?: (query: string) => void;
@@ -157,12 +158,7 @@ export function SearchBar({ onSearch, placeholder = "Ask anything about Omni Ana
     performSearch(suggestion);
   };
 
-  const formatDuration = (hours: number): string => {
-    if (hours < 1) {
-      return `${Math.round(hours * 60)} min`;
-    }
-    return `${hours.toFixed(1)} hrs`;
-  };
+
 
   const highlightText = (text: string, query: string): React.ReactNode => {
     if (!query.trim()) return text;

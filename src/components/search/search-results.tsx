@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BookOpen, Clock, ChevronRight, Star, TrendingUp, Users } from 'lucide-react';
 import type { SearchResult } from '@/lib/search';
+import { formatDuration } from '@/lib/utils';
 
 interface SearchResultsProps {
   query: string;
@@ -48,12 +49,7 @@ export function SearchResults({ query, maxResults = 8, showQueryInfo = true }: S
     }
   };
 
-  const formatDuration = (hours: number): string => {
-    if (hours < 1) {
-      return `${Math.round(hours * 60)} min`;
-    }
-    return `${hours.toFixed(1)} hrs`;
-  };
+
 
   const highlightText = (text: string, query: string): React.ReactNode => {
     if (!query.trim()) return text;

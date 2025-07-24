@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ChapterWithDuration } from '@/lib/content';
 import { getCourseProgress, getChapterProgress, getLessonProgress } from '@/lib/progress';
+import { formatDuration } from '@/lib/utils';
 import { BookOpen, Circle, Clock, CheckCircle2, ChevronDown, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -143,7 +144,7 @@ export function ChapterNav({ chapters, currentChapter, currentLesson }: ChapterN
                           Chapter {chapter.order}: {chapter.title}
                         </div>
                         <div className="text-xs text-gray-500 mt-0.5">
-                          {chapterProg.completed}/{chapterProg.total} lessons • {chapter.estimatedHours}h
+                          {chapterProg.completed}/{chapterProg.total} lessons • {formatDuration(chapter.estimatedHours)}
                         </div>
                       </div>
                     </div>
