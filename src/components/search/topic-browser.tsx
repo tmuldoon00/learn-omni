@@ -51,7 +51,7 @@ export function TopicBrowser({ suggestions }: TopicBrowserProps) {
   ];
 
   return (
-    <div className="bg-gray-50 rounded-lg p-6">
+    <div className="bg-gray-50 rounded p-6">
       <h2 className="text-xl font-semibold text-gray-900 mb-6">Browse by Topic</h2>
       <div className="grid md:grid-cols-2 gap-6">
         {topicCategories.map((category) => (
@@ -69,7 +69,7 @@ export function TopicBrowser({ suggestions }: TopicBrowserProps) {
                     url.searchParams.set('q', topic);
                     window.location.href = url.toString();
                   }}
-                  className="block w-full text-left text-sm text-gray-600 hover:text-ka-blue hover:bg-white px-3 py-2 rounded-lg transition-colors border border-transparent hover:border-gray-200 hover:shadow-sm"
+                  className="block w-full text-left text-sm text-gray-600 hover:text-ka-blue hover:bg-white px-3 py-2 rounded transition-colors border border-transparent hover:border-gray-200 hover:shadow-sm"
                 >
                   {topic}
                 </button>
@@ -91,7 +91,7 @@ export function TopicBrowser({ suggestions }: TopicBrowserProps) {
                 url.searchParams.set('q', suggestion);
                 window.location.href = url.toString();
               }}
-              className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm text-gray-700 hover:border-ka-blue hover:text-ka-blue transition-colors hover:shadow-sm"
+              className="px-3 py-1 bg-white border border-gray-300 rounded text-sm text-gray-700 hover:border-ka-blue hover:text-ka-blue transition-colors hover:shadow-sm"
             >
               {suggestion}
             </button>

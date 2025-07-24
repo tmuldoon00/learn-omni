@@ -14,6 +14,17 @@ const config: Config = {
         'ka-blue-light': '#e7f3ff',
         'ka-green': '#00af54',
       },
+      borderRadius: {
+        'none': '0px',
+        'sm': '1px',
+        DEFAULT: '2px',
+        'md': '3px',
+        'lg': '3px',
+        'xl': '4px',
+        '2xl': '6px',
+        '3xl': '8px',
+        'full': '9999px',
+      },
     },
   },
 };

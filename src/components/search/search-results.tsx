@@ -94,7 +94,7 @@ export function SearchResults({ query, maxResults = 8, showQueryInfo = true }: S
     <div className="space-y-6">
       {/* Query Information */}
       {showQueryInfo && query && (
-        <div className="bg-gray-50 rounded-lg p-4">
+        <div className="bg-gray-50 rounded p-4">
           <h2 className="text-lg font-semibold text-gray-900 mb-2">
             Search Results for "{query}"
           </h2>
@@ -113,7 +113,7 @@ export function SearchResults({ query, maxResults = 8, showQueryInfo = true }: S
       {results.length > 0 ? (
         <div className="space-y-4">
           {results.map((result, index) => (
-            <div key={result.chapterId} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+            <div key={result.chapterId} className="bg-white border border-gray-200 rounded p-6 hover:shadow-md transition-shadow">
               {/* Chapter Header */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
@@ -148,7 +148,7 @@ export function SearchResults({ query, maxResults = 8, showQueryInfo = true }: S
                   <h4 className="font-medium text-gray-900 mb-3">Most Relevant Lessons:</h4>
                   <div className="space-y-3">
                     {result.matchedLessons.map((lesson) => (
-                      <div key={lesson.lessonId} className="bg-gray-50 rounded-lg p-4">
+                      <div key={lesson.lessonId} className="bg-gray-50 rounded p-4">
                         <Link 
                           href={`/chapter/${result.chapterId}/lesson/${lesson.lessonId}`}
                           className="block hover:bg-gray-100 rounded transition-colors p-2 -m-2"
@@ -194,7 +194,7 @@ export function SearchResults({ query, maxResults = 8, showQueryInfo = true }: S
                     ? `/chapter/${result.chapterId}/lesson/${result.matchedLessons[0].lessonId}`
                     : `/chapter/${result.chapterId}/lesson/${result.chapterId.split('-')[0]}-01`
                   }
-                  className="inline-flex items-center gap-2 bg-ka-blue text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                  className="inline-flex items-center gap-2 bg-ka-blue text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium"
                 >
                   Start Learning
                   <ChevronRight className="w-4 h-4" />
@@ -206,7 +206,7 @@ export function SearchResults({ query, maxResults = 8, showQueryInfo = true }: S
       ) : query ? (
         /* No Results */
         <div className="text-center py-8">
-          <div className="bg-gray-50 rounded-lg p-8">
+          <div className="bg-gray-50 rounded p-8">
             <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-medium text-gray-900 mb-2">
               No chapters found for "{query}"
@@ -224,7 +224,7 @@ export function SearchResults({ query, maxResults = 8, showQueryInfo = true }: S
                     <button
                       key={suggestion}
                       onClick={() => window.location.href = `/search?q=${encodeURIComponent(suggestion)}`}
-                      className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm text-gray-700 hover:border-ka-blue hover:text-ka-blue transition-colors"
+                      className="px-3 py-1 bg-white border border-gray-300 rounded text-sm text-gray-700 hover:border-ka-blue hover:text-ka-blue transition-colors"
                     >
                       {suggestion}
                     </button>

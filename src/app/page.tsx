@@ -59,14 +59,14 @@ export default function HomePage() {
           <div className="flex items-center justify-center gap-4 mb-12">
             <Link
               href={`/chapter/${chapters[0]?.id}/lesson/${chapters[0]?.lessons[0]?.id}`}
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center gap-2"
+              className="bg-blue-600 text-white px-8 py-3 rounded font-medium hover:bg-blue-700 transition-colors flex items-center gap-2"
             >
               <PlayCircle className="w-5 h-5" />
               Start Learning
             </Link>
             <Link
               href="/search"
-              className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+              className="border border-gray-300 text-gray-700 px-8 py-3 rounded font-medium hover:bg-gray-50 transition-colors"
             >
               Browse Topics
             </Link>
@@ -93,7 +93,7 @@ export default function HomePage() {
               <Link
                 key={chapter.id}
                 href={`/chapter/${chapter.id}/lesson/${chapter.lessons[0]?.id}`}
-                className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow group"
+                className="bg-white rounded border border-gray-200 p-6 hover:shadow-md transition-shadow group"
               >
                 <div className="text-sm font-medium text-blue-600 mb-2">
                   Chapter {chapter.order}
@@ -113,7 +113,7 @@ export default function HomePage() {
           </div>
 
           {/* What You&apos;ll Learn */}
-          <div className="bg-white rounded-lg border border-gray-200 p-8">
+          <div className="bg-white rounded border border-gray-200 p-8">
             <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
               What You&apos;ll Learn
             </h3>
@@ -137,7 +137,7 @@ export default function HomePage() {
 
         {/* Getting Started */}
         <div className="pb-16">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-600 rounded-lg p-8 text-white text-center">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-600 rounded p-8 text-white text-center">
             <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
               Join thousands of learners mastering data analytics with Omni. 
@@ -146,14 +146,14 @@ export default function HomePage() {
             <div className="flex items-center justify-center gap-4">
               <Link
                 href={`/chapter/${chapters[0]?.id}/lesson/${chapters[0]?.lessons[0]?.id}`}
-                className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center gap-2"
+                className="bg-white text-blue-600 px-6 py-3 rounded font-medium hover:bg-gray-100 transition-colors flex items-center gap-2"
               >
                 Start Chapter 1
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/search"
-                className="border border-white/20 text-white px-6 py-3 rounded-lg font-medium hover:bg-white/10 transition-colors"
+                className="border border-white/20 text-white px-6 py-3 rounded font-medium hover:bg-white/10 transition-colors"
               >
                 Explore Topics
               </Link>

@@ -96,7 +96,7 @@ export function LessonContent({ lesson }: LessonContentProps) {
                     );
                   },
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-3 border-ka-blue bg-ka-blue-light p-3 my-3 text-sm rounded-r">
+                    <blockquote className="border-l-3 border-ka-blue bg-ka-blue-light p-3 my-3 text-sm rounded-r-sm">
                       {children}
                     </blockquote>
                   ),
@@ -129,7 +129,7 @@ export function LessonContent({ lesson }: LessonContentProps) {
           remarkPlugins={[remarkGfm]}
           components={{
             blockquote: ({ children }) => (
-              <blockquote className="border-l-4 border-ka-blue bg-ka-blue-light p-4 my-6 rounded-r-md">
+              <blockquote className="border-l-4 border-ka-blue bg-ka-blue-light p-4 my-6 rounded-r-sm">
                 {children}
               </blockquote>
             ),
@@ -140,7 +140,7 @@ export function LessonContent({ lesson }: LessonContentProps) {
                   {children}
                 </code>
               ) : (
-                <pre className="bg-gray-50 border border-gray-200 p-4 rounded-lg overflow-x-auto my-4">
+                <pre className="bg-gray-50 border border-gray-200 p-4 rounded overflow-x-auto my-4">
                   <code>{children}</code>
                 </pre>
               );

@@ -124,7 +124,7 @@ export function HeaderSearch() {
             onKeyDown={handleKeyDown}
             onFocus={() => query.trim().length >= 2 && setIsOpen(true)}
             placeholder="Search course..."
-            className="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-ka-blue focus:border-ka-blue outline-none text-sm bg-white"
+            className="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded focus:ring-1 focus:ring-ka-blue focus:border-ka-blue outline-none text-sm bg-white"
           />
           {isLoading && (
             <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
@@ -136,7 +136,7 @@ export function HeaderSearch() {
 
       {/* Quick Results Dropdown */}
       {isOpen && results.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-md shadow-lg z-50 max-w-sm">
+        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded shadow-lg z-50 max-w-sm">
           <div className="p-2">
             {results.map((result, index) => (
               <Link

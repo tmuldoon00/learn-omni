@@ -22,7 +22,7 @@ const LoadingState = ({ title }: { title: string }) => (
 const PlaceholderState = ({ title }: { title: string }) => (
   <div className="absolute inset-0 flex items-center justify-center">
     <div className="text-center">
-      <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center mx-auto mb-4">
         <Play className="w-8 h-8 text-gray-400" />
       </div>
       <p className="font-medium text-gray-700 mb-1">Video Coming Soon</p>

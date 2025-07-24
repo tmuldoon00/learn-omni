@@ -98,7 +98,7 @@ export function ChapterNav({ chapters, currentChapter, currentLesson }: ChapterN
 
         {/* Course Progress */}
         {courseProgress.total > 0 && (
-          <div className="mb-6 p-3 bg-gray-50 rounded-lg">
+          <div className="mb-6 p-3 bg-gray-50 rounded">
             <div className="flex items-center justify-between text-sm mb-2">
               <span className="text-gray-700 font-medium">Course progress</span>
               <span className="text-gray-500 text-xs">{courseProgress.completionPercentage}%</span>
@@ -123,9 +123,9 @@ export function ChapterNav({ chapters, currentChapter, currentLesson }: ChapterN
             const isCurrentChapter = currentChapter === chapter.id;
             
             return (
-              <div key={chapter.id} className="rounded-lg">
+              <div key={chapter.id} className="rounded">
                 {/* Chapter Header */}
-                <div className={`relative rounded-lg transition-colors ${isCurrentChapter ? 'bg-blue-50 border border-blue-200' : 'hover:bg-gray-50'}`}>
+                                  <div className={`relative rounded transition-colors ${isCurrentChapter ? 'bg-blue-50 border border-blue-200' : 'hover:bg-gray-50'}`}>
                   <button
                     onClick={() => toggleChapter(chapter.id)}
                     className="w-full flex items-center justify-between p-3 text-left"
@@ -166,7 +166,7 @@ export function ChapterNav({ chapters, currentChapter, currentLesson }: ChapterN
                           <Link
                             key={lesson.id}
                             href={`/chapter/${chapter.id}/lesson/${lesson.id}`}
-                            className={`flex items-center gap-3 p-2 rounded-md text-sm transition-all duration-200 ${
+                            className={`flex items-center gap-3 p-2 rounded text-sm transition-all duration-200 ${
                               isCurrentLesson 
                                 ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md border-2 border-blue-500 font-semibold' 
                                 : 'hover:bg-gray-100 text-gray-700 hover:text-gray-900'

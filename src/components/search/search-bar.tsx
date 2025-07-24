@@ -192,7 +192,7 @@ export function SearchBar({ onSearch, placeholder = "Ask anything about Omni Ana
             onKeyDown={handleKeyDown}
             onFocus={() => setShowResults(true)}
             placeholder={placeholder}
-            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ka-blue focus:border-transparent outline-none text-sm bg-white shadow-sm"
+            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-ka-blue focus:border-transparent outline-none text-sm bg-white shadow-sm"
           />
           {isSearching && (
             <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
@@ -204,7 +204,7 @@ export function SearchBar({ onSearch, placeholder = "Ask anything about Omni Ana
 
       {/* Search Results */}
       {showResults && (results.length > 0 || suggestions.length > 0) && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded shadow-lg z-50 max-h-96 overflow-y-auto">
           {/* Search Results */}
           {results.length > 0 && (
             <div className="p-2">

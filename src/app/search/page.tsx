@@ -41,12 +41,12 @@ function SearchPageContent({ query }: { query: string }) {
       {/* Welcome Message */}
       {!query && (
         <div className="text-center py-12">
-          <div className="bg-gradient-to-br from-ka-blue to-blue-600 rounded-lg p-8 text-white mb-8">
+          <div className="bg-gradient-to-br from-ka-blue to-blue-600 rounded p-8 text-white mb-8">
             <h1 className="text-3xl font-bold mb-4">Search the Omni Analytics Course</h1>
             <p className="text-xl opacity-90 mb-6">
               Ask any question and find the most relevant chapters and lessons
             </p>
-            <div className="bg-white/10 rounded-lg p-4 text-left max-w-2xl mx-auto">
+            <div className="bg-white/10 rounded p-4 text-left max-w-2xl mx-auto">
               <h3 className="font-semibold mb-2">Try asking questions like:</h3>
               <ul className="space-y-1 text-sm opacity-90">
                 <li>• &quot;How do I create interactive dashboards?&quot;</li>
@@ -60,17 +60,17 @@ function SearchPageContent({ query }: { query: string }) {
 
           {/* Course Overview */}
           <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="bg-white border border-gray-200 rounded p-6">
               <div className="text-2xl font-bold text-ka-blue mb-2">{chapters.length}</div>
               <div className="font-medium text-gray-900">Chapters</div>
               <div className="text-sm text-gray-600">Comprehensive coverage</div>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="bg-white border border-gray-200 rounded p-6">
               <div className="text-2xl font-bold text-ka-blue mb-2">{totalLessons}</div>
               <div className="font-medium text-gray-900">Video Lessons</div>
               <div className="text-sm text-gray-600">Professional demos</div>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="bg-white border border-gray-200 rounded p-6">
               <div className="text-2xl font-bold text-ka-blue mb-2">{totalHours.toFixed(1)}</div>
               <div className="font-medium text-gray-900">Hours Content</div>
               <div className="text-sm text-gray-600">In-depth learning</div>
