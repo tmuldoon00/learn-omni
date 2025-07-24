@@ -1,0 +1,80 @@
+{
+  "id": "07-advanced-features",
+  "title": "Advanced Features and Development",
+  "description": "Master enterprise-grade modeling, dbt workflows, API development, and advanced platform capabilities",
+  "order": 7,
+  "lessons": [
+    {
+      "id": "01-advanced-dbt-integration",
+      "title": "Dynamic dbt Environments and Schema Testing",
+      "description": "Test dbt changes with dynamic schema swapping and environment-specific development",
+      "duration": "3 min",
+      "videoId": "yES0ijO3Co0",
+      "order": 1,
+      "videoMinutes": 3
+    },
+    {
+      "id": "02-dynamic-environments-development",
+      "title": "Enterprise Git Workflows and Pull Requests",
+      "description": "Advanced version control with pull requests, branch management, and model history",
+      "duration": "9 min",
+      "videoId": "VZgSkHd5C9E",
+      "order": 2,
+      "videoMinutes": 9
+    },
+    {
+      "id": "03-enterprise-git-workflows",
+      "title": "Advanced Branch Mode Development",
+      "description": "Enterprise development workflows with sophisticated branching and testing capabilities",
+      "duration": "4 min",
+      "videoId": "Yz6aKy_GF6c",
+      "order": 3,
+      "videoMinutes": 4
+    },
+    {
+      "id": "04-model-organization-topic-files",
+      "title": "Model IDE and Direct dbt Editing",
+      "description": "Create and edit dbt models directly from Omni with integrated development experience",
+      "duration": "5 min",
+      "videoId": "oytmsSdWV9o",
+      "order": 4,
+      "videoMinutes": 5
+    },
+    {
+      "id": "05-api-development-automation",
+      "title": "API Development and Model Automation",
+      "description": "Leverage model editing APIs for programmatic model management and automation",
+      "duration": "6 min",
+      "videoId": "gTZzyt1I9_w",
+      "order": 5,
+      "videoMinutes": 6
+    },
+    {
+      "id": "06-seamless-change-management",
+      "title": "Seamless Change Management and Content Validation",
+      "description": "Maintain content integrity through database changes with automated validation workflows",
+      "duration": "3 min",
+      "videoId": "LvhoOr3vQwY",
+      "order": 6,
+      "videoMinutes": 3
+    },
+    {
+      "id": "07-advanced-branch-mode",
+      "title": "Advanced View Organization in Topics",
+      "description": "Customize views within topics for specialized use cases and field definitions",
+      "duration": "14 min",
+      "videoId": "CTYR30-tKps",
+      "order": 7,
+      "videoMinutes": 14
+    },
+    {
+      "id": "08-model-ide-dbt-editing",
+      "title": "Snowflake Native App Integration",
+      "description": "Deploy the full Omni app within Snowflake alongside your database",
+      "duration": "6 min",
+      "videoId": "RSxX21T-CNg",
+      "order": 8,
+      "videoMinutes": 6
+    }
+  ]
+}

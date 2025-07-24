@@ -1,0 +1,62 @@
+{
+  "id": "01-introduction",
+  "title": "Introduction to Omni Analytics",
+  "description": "Get started with the fundamentals of analytics and discover what makes Omni different",
+  "order": 1,
+  "lessons": [
+    {
+      "id": "01-welcome",
+      "title": "Welcome to Omni Analytics - CEO Introduction",
+      "description": "Comprehensive platform introduction with co-founder & CEO Colin Zima",
+      "duration": "45 min",
+      "videoMinutes": 45,
+      "videoId": "HMm8pTfeipI",
+      "order": 1
+    },
+    {
+      "id": "02-omni-demo-overview",
+      "title": "Complete Omni Platform Demo",
+      "description": "End-to-end demonstration from data connection to dashboard deployment",
+      "duration": "9 min",
+      "videoMinutes": 9,
+      "videoId": "9GduXHYYGbU",
+      "order": 2
+    },
+    {
+      "id": "03-just-in-time-modeling",
+      "title": "Just-in-Time Data Modeling Philosophy",
+      "description": "Understanding Omni's revolutionary approach to building data models as you analyze",
+      "duration": "5 min",
+      "videoMinutes": 5,
+      "videoId": "jJN_tfbp078",
+      "order": 3
+    },
+    {
+      "id": "04-platform-tour",
+      "title": "Platform Tour - Key Features",
+      "description": "Essential features walkthrough including filtering, drilling, and querying",
+      "duration": "5 min",
+      "videoMinutes": 5,
+      "videoId": "TPylic8mr6E",
+      "order": 4
+    },
+    {
+      "id": "05-ai-semantic-overview",
+      "title": "AI-Powered Analytics with Semantic Models",
+      "description": "How AI and semantic modeling work together for accurate, business-context-aware insights",
+      "duration": "21 min",
+      "videoMinutes": 21,
+      "videoId": "Z8G2culbFWs",
+      "order": 5
+    },
+    {
+      "id": "06-why-omni-different",
+      "title": "Why Modern Data Tools Need Reimagining",
+      "description": "Deep discussion on what the last generation got wrong and Omni's vision for the future",
+      "duration": "39 min",
+      "videoMinutes": 39,
+      "videoId": "YdTuhEpFrWU",
+      "order": 6
+    }
+  ]
+}

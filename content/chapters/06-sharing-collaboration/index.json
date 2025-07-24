@@ -1,0 +1,80 @@
+{
+  "id": "06-sharing-collaboration",
+  "title": "Sharing and Collaboration",
+  "description": "Master embedded analytics, automated delivery, and enterprise collaboration workflows",
+  "order": 6,
+  "lessons": [
+    {
+      "id": "01-embedded-analytics-comprehensive",
+      "title": "Comprehensive Embedded Analytics Strategy",
+      "description": "Build customer-facing data products with embedded dashboards and self-service analytics",
+      "duration": "2 min",
+      "videoId": "ShTn0RwMZng",
+      "order": 1,
+      "videoMinutes": 2
+    },
+    {
+      "id": "02-high-performance-embedding",
+      "title": "High-Performance Embedded Dashboards",
+      "description": "Ultra-fast embedded experiences with optimized loading and seamless navigation",
+      "duration": "5 min",
+      "videoId": "WoP5BOA4q0I",
+      "order": 2,
+      "videoMinutes": 5
+    },
+    {
+      "id": "03-embedded-workbook-experiences",
+      "title": "Embedded Workbook Experiences",
+      "description": "Enable customers to build their own analyses within embedded applications",
+      "duration": "2 min",
+      "videoId": "4TkKEt45T88",
+      "order": 3,
+      "videoMinutes": 2
+    },
+    {
+      "id": "04-content-organization-collaboration",
+      "title": "Content Organization and Team Collaboration",
+      "description": "Advanced folder systems, sharing workflows, and collaborative content management",
+      "duration": "10 min",
+      "videoId": "B29l43aTbEs",
+      "order": 4,
+      "videoMinutes": 10
+    },
+    {
+      "id": "05-automated-slack-delivery",
+      "title": "Automated Slack Integration and Delivery",
+      "description": "Seamless dashboard delivery to Slack channels with scheduling and customization",
+      "duration": "9 min",
+      "videoId": "qJ5EtxDISlA",
+      "order": 5,
+      "videoMinutes": 9
+    },
+    {
+      "id": "06-enterprise-delivery-systems",
+      "title": "Enterprise Data Delivery Systems",
+      "description": "Email, SFTP, and automated delivery workflows for enterprise data distribution",
+      "duration": "4 min",
+      "videoId": "ZfidI0-EhaY",
+      "order": 6,
+      "videoMinutes": 4
+    },
+    {
+      "id": "07-embedded-authentication-security",
+      "title": "Embedded Authentication and Security",
+      "description": "Seamless user authentication and security controls for embedded analytics",
+      "duration": "8 min",
+      "videoId": "aNXq4AhuAVg",
+      "order": 7,
+      "videoMinutes": 8
+    },
+    {
+      "id": "08-customer-self-service-analytics",
+      "title": "Customer Self-Service Analytics Creation",
+      "description": "Enable customers to create their own reports and analyses without support",
+      "duration": "1 min",
+      "videoId": "FvSf9GhuU4Y",
+      "order": 8,
+      "videoMinutes": 1
+    }
+  ]
+}

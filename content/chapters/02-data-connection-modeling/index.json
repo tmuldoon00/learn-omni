@@ -1,0 +1,71 @@
+{
+  "id": "02-data-connection-modeling",
+  "title": "Data Connection and Modeling",
+  "description": "Master data connections, semantic modeling, and dbt integration workflows",
+  "order": 2,
+  "lessons": [
+    {
+      "id": "01-data-connection-fundamentals",
+      "title": "Data Connection Fundamentals",
+      "description": "Connect to databases and understand Omni's approach to data access",
+      "duration": "2 min",
+      "videoId": "m5CnfB9Vb90",
+      "order": 1,
+      "videoMinutes": 2
+    },
+    {
+      "id": "02-data-modeling-philosophy",
+      "title": "Just-in-Time Data Modeling",
+      "description": "Understanding Omni's revolutionary approach to building semantic models",
+      "duration": "10 min",
+      "videoId": "nmNG81KWpxA",
+      "order": 2,
+      "videoMinutes": 10
+    },
+    {
+      "id": "03-excel-calculations-modeling",
+      "title": "Excel-Style Calculations and Metrics",
+      "description": "Creating business metrics with familiar spreadsheet functions",
+      "duration": "10 min",
+      "videoId": "XWkhKirKQHU",
+      "order": 3,
+      "videoMinutes": 10
+    },
+    {
+      "id": "04-dbt-integration-comprehensive",
+      "title": "Comprehensive dbt Integration",
+      "description": "Complete guide to dbt workflows, dynamic environments, and change management",
+      "duration": "19 min",
+      "videoId": "3YWD7s2dLq0",
+      "order": 4,
+      "videoMinutes": 19
+    },
+    {
+      "id": "05-dbt-bidirectional-workflow",
+      "title": "Bi-Directional dbt Development",
+      "description": "Create, edit, and manage dbt models directly from Omni",
+      "duration": "7 min",
+      "videoId": "l_FQFzPWQYU",
+      "order": 5,
+      "videoMinutes": 7
+    },
+    {
+      "id": "06-advanced-modeling-concepts",
+      "title": "Advanced Modeling and Organization",
+      "description": "Topic files, model organization, and enterprise-scale semantic models",
+      "duration": "12 min",
+      "videoId": "X16GlvGOljQ",
+      "order": 6,
+      "videoMinutes": 12
+    },
+    {
+      "id": "07-csv-data-input-workflows",
+      "title": "CSV Upload and Data Input Workflows",
+      "description": "Modern data workflows with CSV uploads and warehouse write-back",
+      "duration": "11 min",
+      "videoId": "LeM5NmVWq9Y",
+      "order": 7,
+      "videoMinutes": 11
+    }
+  ]
+}

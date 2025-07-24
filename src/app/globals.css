@@ -1,26 +1,348 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: white;
+    color: #21242c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Layout */
+  .ka-header {
+    background-color: #1865f2;
+    color: white; 
+    border-bottom: 1px solid #0c4fb3;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ka-sidebar {
+    background-color: white;
+    border-right: 1px solid #e5e7eb;
+    width: 20rem;
+    box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .ka-main {
+    background-color: white;
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  /* Color utilities */
+  .ka-blue {
+    background-color: #1865f2;
+  }
+  
+  .ka-blue-bg {
+    background-color: #e7f3ff;
+  }
+  
+  .ka-blue-light {
+    background-color: #f0f8ff;
+  }
+
+  /* Navigation */
+  .ka-nav-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: #374151;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    margin: 0.125rem 0.5rem;
+  }
+  
+  .ka-nav-item:hover {
+    background-color: #f3f4f6;
+    transform: translateX(2px);
+  }
+  
+  .ka-nav-item.active {
+    background-color: #e7f3ff;
+    color: #1865f2;
+    border: 1px solid #93c5fd;
+    font-weight: 500;
+  }
+  
+  .ka-chapter-header {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    margin: 0.25rem 0.5rem;
+  }
+  
+  .ka-chapter-header:hover {
+    background-color: #f9fafb;
+  }
+  
+  .ka-chapter-header.active {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+    border-left: 3px solid #1865f2;
+  }
+
+  /* Buttons */
+  .ka-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .ka-btn-primary {
+    background-color: #1865f2;
+    color: white;
+    border-color: #1865f2;
+    box-shadow: 0 1px 2px rgba(24, 101, 242, 0.2);
+  }
+  
+  .ka-btn-primary:hover {
+    background-color: #0c4fb3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(24, 101, 242, 0.3);
+  }
+  
+  .ka-btn-secondary {
+    background-color: white;
+    color: #374151;
+    border-color: #d1d5db;
+  }
+  
+  .ka-btn-secondary:hover {
+    background-color: #f9fafb;
+    border-color: #9ca3af;
+  }
+
+  /* Cards */
+  .ka-card {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+  }
+  
+  .ka-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+  }
+
+  /* Progress bars */
+  .ka-progress-bar {
+    width: 100%;
+    height: 0.5rem;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .ka-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1865f2, #0c4fb3);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  /* Video Player */
+  .ka-video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .ka-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Lesson content */
+  .ka-lesson-content {
+    max-width: none;
+    line-height: 1.7;
+  }
+  
+  .ka-lesson-content h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  .ka-lesson-content h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem 0;
+    line-height: 1.3;
+  }
+  
+  .ka-lesson-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 1.5rem 0 0.75rem 0;
+    line-height: 1.4;
+  }
+  
+  .ka-lesson-content h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 1.25rem 0 0.5rem 0;
+    line-height: 1.4;
+  }
+  
+  .ka-lesson-content p {
+    margin-bottom: 1rem;
+    color: #4b5563;
+  }
+  
+  .ka-lesson-content ul,
+  .ka-lesson-content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  .ka-lesson-content li {
+    margin-bottom: 0.5rem;
+    color: #4b5563;
+  }
+  
+  .ka-lesson-content blockquote {
+    border-left: 4px solid #1865f2;
+    background-color: #f8fafc;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  
+  .ka-lesson-content code {
+    background-color: #f1f5f9;
+    padding: 0.125rem 0.375rem;
+    border-radius: 3px;
+    font-size: 0.875rem;
+    color: #1e293b;
+  }
+  
+  .ka-lesson-content pre {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+  
+  .ka-lesson-content pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+
+  /* Status indicators */
+  .ka-lesson-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid;
+  }
+
+  .ka-lesson-status.completed {
+    background-color: #00af54;
+    border-color: #00af54;
+    color: white;
+  }
+
+  .ka-lesson-status.current {
+    border-color: #1865f2;
+    background-color: #e7f3ff;
+  }
+
+  /* Typography */
+  .ka-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  
+  .ka-subtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+  
+  .ka-body {
+    color: #4b5563;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  
+  .ka-caption {
+    font-size: 0.875rem;
+    color: #6b7280;
+    line-height: 1.4;
+  }
+
+  /* Stats display */
+  .ka-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+    padding: 0.75rem 0;
+  }
+
+  .ka-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+
+  .ka-stat-icon {
+    width: 1rem;
+    height: 1rem;
+    color: #9ca3af;
+  }
+
+  /* Breadcrumb */
+  .ka-breadcrumb {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+  }
+
+  .ka-breadcrumb-separator {
+    margin: 0 0.5rem;
+    color: #d1d5db;
+  }
 }

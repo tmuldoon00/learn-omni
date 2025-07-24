@@ -1,0 +1,80 @@
+{
+  "id": "03-querying-data-exploration",
+  "title": "Querying and Data Exploration",
+  "description": "Master AI-powered querying, Excel calculations, and advanced data exploration techniques",
+  "order": 3,
+  "lessons": [
+    {
+      "id": "01-ai-powered-querying-comprehensive",
+      "title": "AI-Powered Natural Language Querying",
+      "description": "Use AI to ask questions in plain English and get accurate, contextual insights",
+      "duration": "1 min",
+      "videoId": "Rx5sp0wO5X0",
+      "order": 1,
+      "videoMinutes": 1
+    },
+    {
+      "id": "02-excel-calculations-masterclass",
+      "title": "Excel Calculations Masterclass with AI",
+      "description": "Complete guide to Excel syntax, AI assistance, and advanced calculations",
+      "duration": "41 min",
+      "videoId": "lSKdOnWj9CE",
+      "order": 2,
+      "videoMinutes": 41
+    },
+    {
+      "id": "03-platform-tour-key-features",
+      "title": "Quick Excel Calculations and Statistical Analysis",
+      "description": "Z-scores, linear regression, and statistical functions using Excel syntax",
+      "duration": "1 min",
+      "videoId": "MuwReSb3JVQ",
+      "order": 3,
+      "videoMinutes": 1
+    },
+    {
+      "id": "04-sql-experience-advanced",
+      "title": "Advanced SQL Experience",
+      "description": "Professional SQL interface with UI transitions and advanced query capabilities",
+      "duration": "4 min",
+      "videoId": "qh1ZfmjwoL4",
+      "order": 4,
+      "videoMinutes": 4
+    },
+    {
+      "id": "05-point-click-power-features",
+      "title": "Point-and-Click Power Features",
+      "description": "Advanced aggregations, joins, and calculations without SQL",
+      "duration": "2 min",
+      "videoId": "I1Y6_QK51YA",
+      "order": 5,
+      "videoMinutes": 2
+    },
+    {
+      "id": "06-advanced-query-patterns",
+      "title": "Advanced Query Patterns and Techniques",
+      "description": "Filter by query, xlookup, and cross-query data connections",
+      "duration": "3 min",
+      "videoId": "e7dWWsZk4gc",
+      "order": 6,
+      "videoMinutes": 3
+    },
+    {
+      "id": "07-ai-query-optimization",
+      "title": "AI Query Optimization and Filtering",
+      "description": "Enhanced AI features for reliable query results and improved filtering",
+      "duration": "8 min",
+      "videoId": "8sq0WWnfsYo",
+      "order": 7,
+      "videoMinutes": 8
+    },
+    {
+      "id": "08-data-parsing-json-extraction",
+      "title": "Data Parsing and JSON Extraction",
+      "description": "Self-service data parsing and JSON manipulation without technical support",
+      "duration": "1 min",
+      "videoId": "XdRGFC5tc50",
+      "order": 8,
+      "videoMinutes": 1
+    }
+  ]
+}

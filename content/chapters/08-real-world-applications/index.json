@@ -1,0 +1,80 @@
+{
+  "id": "08-real-world-applications",
+  "title": "Real-World Applications and Case Studies",
+  "description": "Industry examples, customer success stories, and practical implementation strategies across business functions",
+  "order": 8,
+  "lessons": [
+    {
+      "id": "01-comprehensive-platform-overview",
+      "title": "Rose Rocket Customer Success Story",
+      "description": "How Rose Rocket built product analytics and usage insights with Omni",
+      "duration": "2 min",
+      "videoId": "axaHrmXGxEQ",
+      "order": 1,
+      "videoMinutes": 2
+    },
+    {
+      "id": "02-customer-success-case-studies",
+      "title": "Customer Success: Front and Snowflake Partnership",
+      "description": "Real customer migration story and partnership insights from industry leaders",
+      "duration": "24 min",
+      "videoId": "Agw9j14kosg",
+      "order": 2,
+      "videoMinutes": 24
+    },
+    {
+      "id": "03-mcp-server-business-applications",
+      "title": "Sales Commission Tracking Application",
+      "description": "Real-time commission system with spreadsheet functionality for sales teams",
+      "duration": "4 min",
+      "videoId": "tKBP9eNQeQ8",
+      "order": 3,
+      "videoMinutes": 4
+    },
+    {
+      "id": "04-live-data-product-development",
+      "title": "Revenue Operations and Sales Analytics",
+      "description": "Pipeline analysis, forecasting, and sales performance optimization workflows",
+      "duration": "18 min",
+      "videoId": "VSa2W_rUV1M",
+      "order": 4,
+      "videoMinutes": 18
+    },
+    {
+      "id": "05-enterprise-excel-calculations",
+      "title": "Financial and Operational Analytics",
+      "description": "Cost analysis, usage optimization, and operational efficiency measurement",
+      "duration": "6 min",
+      "videoId": "RPtbqA92zj0",
+      "order": 5,
+      "videoMinutes": 6
+    },
+    {
+      "id": "06-comprehensive-product-highlights",
+      "title": "2024 Product Highlights: Real-World Impact",
+      "description": "Year-end review of product innovations with customer impact stories and business outcomes",
+      "duration": "32 min",
+      "videoId": "9egsI-YLwEM",
+      "order": 6,
+      "videoMinutes": 32
+    },
+    {
+      "id": "07-snowflake-integration-showcase",
+      "title": "Modern Data Stack Discussion",
+      "description": "Industry experts discuss reimagining modern data tools and BI workflows",
+      "duration": "20 min",
+      "videoId": "vBMUsotU8yk",
+      "order": 7,
+      "videoMinutes": 20
+    },
+    {
+      "id": "08-implementation-success-strategies",
+      "title": "Implementation Success Strategies and ROI",
+      "description": "Proven approaches for enterprise deployment, change management, and measuring business impact",
+      "type": "text",
+      "duration": "25 min read",
+      "order": 8,
+      "videoMinutes": 25
+    }
+  ]
+}

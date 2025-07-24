@@ -1,0 +1,80 @@
+{
+  "id": "04-visualization-dashboards",
+  "title": "Visualization and Dashboards",
+  "description": "Master professional visualizations, interactive dashboards, and advanced presentation techniques",
+  "order": 4,
+  "lessons": [
+    {
+      "id": "01-data-product-building-comprehensive",
+      "title": "Building Data Products in 30 Minutes",
+      "description": "Complete workflow from analysis to dashboard to embedded data product",
+      "duration": "29 min",
+      "videoId": "4XRgDRv9SRM",
+      "order": 1,
+      "videoMinutes": 29
+    },
+    {
+      "id": "02-visualization-mastery",
+      "title": "Advanced Visualization Mastery",
+      "description": "Trendlines, series formatting, axis controls, and comprehensive chart configuration",
+      "duration": "12 min",
+      "videoId": "ku6sP0ELz3o",
+      "order": 2,
+      "videoMinutes": 12
+    },
+    {
+      "id": "03-professional-dashboard-design",
+      "title": "Professional Dashboard Design and Layout",
+      "description": "Higher density layouts, title controls, tile transparency, and visual polish",
+      "duration": "5 min",
+      "videoId": "auAh3My5lPg",
+      "order": 3,
+      "videoMinutes": 5
+    },
+    {
+      "id": "04-interactive-dashboard-features",
+      "title": "Interactive Dashboard Features and Drilling",
+      "description": "Seamless drill-down, field swapping, and dynamic dashboard interactions",
+      "duration": "9 min",
+      "videoId": "eVaNo2jbtT0",
+      "order": 4,
+      "videoMinutes": 9
+    },
+    {
+      "id": "05-kpi-executive-dashboards",
+      "title": "KPI and Executive Dashboard Creation",
+      "description": "Professional KPI tiles, executive layouts, and goal tracking visualizations",
+      "duration": "1 min",
+      "videoId": "J-W0eBVZaAw",
+      "order": 5,
+      "videoMinutes": 1
+    },
+    {
+      "id": "06-custom-advanced-visualizations",
+      "title": "Custom and Advanced Visualizations",
+      "description": "Custom visualizations, iFrame integration, and specialized chart types",
+      "duration": "3 min",
+      "videoId": "8GamRZOenBU",
+      "order": 6,
+      "videoMinutes": 3
+    },
+    {
+      "id": "07-geographic-mapping-comprehensive",
+      "title": "Geographic Mapping and Spatial Analysis",
+      "description": "Map regions, custom shapes, heatmaps, and comprehensive geographic visualization",
+      "duration": "7 min",
+      "videoId": "sUknsrzDBiY",
+      "order": 7,
+      "videoMinutes": 7
+    },
+    {
+      "id": "08-text-to-visualization-ai",
+      "title": "AI-Powered Text-to-Visualization",
+      "description": "Create advanced custom visualizations using natural language with Vega-Lite",
+      "duration": "9 min",
+      "videoId": "U_UEBTUtnSc",
+      "order": 8,
+      "videoMinutes": 9
+    }
+  ]
+}
