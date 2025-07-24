@@ -13,7 +13,7 @@ A modern e-learning platform built with Next.js 15, featuring comprehensive anal
 ### 📚 Comprehensive Learning Platform
 - **8 Structured Chapters** covering analytics fundamentals to advanced techniques
 - **61 Video Lessons** with enhanced markdown content and practical examples
-- **41+ Hours** of professional content dynamically calculated from video metadata
+- **10.2 Hours** of professional content dynamically calculated from video metadata
 - **Progressive Learning Path** from beginner to advanced analytics mastery
 
 ### 🔍 Intelligent Search System
@@ -213,7 +213,7 @@ Currently no environment variables are required for basic functionality.
 ### By the Numbers
 - **8 Chapters** covering complete analytics workflow
 - **61 Video Lessons** with professional explanations  
-- **41+ Hours** of comprehensive content
+- **10.2 Hours** of comprehensive content
 - **100% Free** and open source
 
 ### Learning Path
