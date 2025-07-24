@@ -1,13 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { ChapterMetadata } from '@/lib/content';
+import { ChapterWithDuration } from '@/lib/content';
 import { getCourseProgress, getChapterProgress, getLessonProgress } from '@/lib/progress';
 import { BookOpen, Circle, Clock, CheckCircle2, ChevronDown, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface ChapterNavProps {
-  chapters: ChapterMetadata[];
+  chapters: ChapterWithDuration[];
   currentChapter?: string;
   currentLesson?: string;
 }
@@ -75,7 +75,7 @@ export function ChapterNav({ chapters, currentChapter, currentLesson }: ChapterN
     setExpandedChapters(newExpanded);
   };
 
-  const getFirstLessonUrl = (chapter: ChapterMetadata) => {
+  const getFirstLessonUrl = (chapter: ChapterWithDuration) => {
     const firstLesson = chapter.lessons.sort((a, b) => a.order - b.order)[0];
     return firstLesson ? `/chapter/${chapter.id}/lesson/${firstLesson.id}` : '#';
   };

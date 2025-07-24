@@ -28,7 +28,7 @@ export function SearchBar({ onSearch, placeholder = "Ask anything about Omni Ana
   const [selectedIndex, setSelectedIndex] = useState(-1);
   
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const searchTimeoutRef = useRef<NodeJS.Timeout>();
+  const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
 
   // Load initial suggestions

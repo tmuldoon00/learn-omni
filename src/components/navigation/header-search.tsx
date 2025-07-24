@@ -21,7 +21,7 @@ export function HeaderSearch() {
   
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
 
   // Handle clicks outside to close dropdown

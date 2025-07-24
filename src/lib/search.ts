@@ -153,8 +153,8 @@ export function buildSearchIndex(): SearchableContent[] {
     // Aggregate chapter-level keywords from all lessons
     const chapterKeywords = [...new Set([
       ...lessons.flatMap(lesson => lesson.keywords),
-      chapter.title.toLowerCase().split(' '),
-      chapter.description.toLowerCase().split(' ')
+      ...chapter.title.toLowerCase().split(' '),
+      ...chapter.description.toLowerCase().split(' ')
     ])].filter(keyword => keyword.length > 2);
 
     return {

@@ -4,9 +4,9 @@ import { SearchResults } from '@/components/search/search-results';
 import { getQuerySuggestions } from '@/lib/search';
 
 interface SearchPageProps {
-  searchParams: {
+  searchParams: Promise<{
     q?: string;
-  };
+  }>;
 }
 
 function SearchPageContent({ query }: { query: string }) {
@@ -170,8 +170,9 @@ function SearchPageContent({ query }: { query: string }) {
   );
 }
 
-export default function SearchPage({ searchParams }: SearchPageProps) {
-  const query = searchParams.q || '';
+export default async function SearchPage({ searchParams }: SearchPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const query = resolvedSearchParams.q || '';
 
   return (
     <div className="ka-main">
