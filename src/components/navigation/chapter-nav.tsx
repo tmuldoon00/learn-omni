@@ -139,7 +139,7 @@ export function ChapterNav({ chapters, currentChapter, currentLesson }: ChapterN
                         )}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <div className="font-medium text-gray-900 text-sm truncate">
+                        <div className="font-medium text-gray-900 text-sm leading-tight">
                           Chapter {chapter.order}: {chapter.title}
                         </div>
                         <div className="text-xs text-gray-500 mt-0.5">
@@ -184,7 +184,7 @@ export function ChapterNav({ chapters, currentChapter, currentLesson }: ChapterN
                               )}
                             </div>
                             <div className="flex-1 min-w-0">
-                              <p className={`font-medium truncate ${isCurrentLesson ? 'text-white' : 'text-gray-900'}`}>
+                              <p className={`font-medium leading-tight ${isCurrentLesson ? 'text-white' : 'text-gray-900'}`}>
                                 {lesson.title}
                               </p>
                               <div className={`flex items-center gap-1 mt-0.5 text-xs ${

@@ -153,11 +153,11 @@ export function HeaderSearch() {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex-1 min-w-0">
-                    <div className="font-medium text-gray-900 truncate">
+                    <div className="font-medium text-gray-900 text-sm leading-tight">
                       {result.lessonTitle || result.chapterTitle}
                     </div>
                     {result.lessonTitle && (
-                      <div className="text-xs text-gray-500 truncate">
+                      <div className="text-xs text-gray-500 leading-tight">
                         {result.chapterTitle}
                       </div>
                     )}
