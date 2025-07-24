@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://learn-omni.vercel.app/sitemap.xml
+
+# Search engines - crawl everything
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Block certain file types that aren't useful for SEO
+Disallow: *.json$
+Disallow: *.js$
+Disallow: *.css$
+
+# Allow important files
+Allow: /favicon.ico
+Allow: /robots.txt
+Allow: /sitemap.xml
+
+# Crawl delay (be respectful)
+Crawl-delay: 1 

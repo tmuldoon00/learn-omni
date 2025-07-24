@@ -1,1 +1,16 @@
- 
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background rounded rectangle for iOS -->
+  <rect width="180" height="180" rx="20" fill="#1865f2"/>
+  
+  <!-- Book/learning element -->
+  <path d="M45 135V56.25c0-6.2 5.03-11.25 11.25-11.25h67.5c6.22 0 11.25 5.05 11.25 11.25V135l-45-16.875L45 135z" fill="#ffffff" fill-opacity="0.95"/>
+  
+  <!-- Analytics chart bars -->
+  <rect x="61.875" y="101.25" width="11.25" height="22.5" fill="#1865f2"/>
+  <rect x="78.75" y="90" width="11.25" height="33.75" fill="#1865f2"/>
+  <rect x="95.625" y="78.75" width="11.25" height="45" fill="#1865f2"/>
+  <rect x="112.5" y="67.5" width="11.25" height="56.25" fill="#1865f2"/>
+  
+  <!-- Data point -->
+  <circle cx="90" cy="61.875" r="8.4375" fill="#1865f2"/>
+</svg> 

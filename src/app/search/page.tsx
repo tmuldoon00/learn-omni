@@ -1,15 +1,33 @@
 import { Suspense } from 'react';
+import { Metadata } from 'next';
 import { SearchBar } from '@/components/search/search-bar';
 import { SearchResults } from '@/components/search/search-results';
 import { TopicBrowser } from '@/components/search/topic-browser';
 import { getQuerySuggestions } from '@/lib/search';
 import { getAllChapters, getAllLessonsCount, getTotalCourseHours } from '@/lib/content';
+import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
 
 interface SearchPageProps {
   searchParams: Promise<{
     q?: string;
   }>;
 }
+
+// Generate SEO metadata for search page
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Search Omni Analytics Course",
+  description: "Search through our comprehensive Omni Analytics course. Find specific lessons, topics, and concepts across 8 chapters and 61 video lessons covering data analytics, AI features, and dashboard creation.",
+  canonical: "/search",
+  keywords: [
+    "search omni course",
+    "find analytics lessons",
+    "omni tutorials search",
+    "data analytics search",
+    "business intelligence lessons",
+    "search course content",
+    "find omni topics"
+  ]
+});
 
 function SearchPageContent({ query }: { query: string }) {
   const suggestions = getQuerySuggestions();
