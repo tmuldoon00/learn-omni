@@ -1,0 +1,16 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="15" fill="#1865f2" stroke="#ffffff" stroke-width="1"/>
+  
+  <!-- Book/learning element -->
+  <path d="M8 24V10c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v14l-8-3-8 3z" fill="#ffffff" fill-opacity="0.9"/>
+  
+  <!-- Analytics chart bars -->
+  <rect x="11" y="18" width="2" height="4" fill="#1865f2"/>
+  <rect x="14" y="16" width="2" height="6" fill="#1865f2"/>
+  <rect x="17" y="14" width="2" height="8" fill="#1865f2"/>
+  <rect x="20" y="12" width="2" height="10" fill="#1865f2"/>
+  
+  <!-- Small dot for data point -->
+  <circle cx="16" cy="11" r="1.5" fill="#1865f2"/>
+</svg> 

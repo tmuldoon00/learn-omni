@@ -65,7 +65,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
     const breadcrumbStructuredData = generateBreadcrumbStructuredData(breadcrumbs);
 
     return (
-      <>
+      <div className="flex min-h-screen">
         {/* Structured Data */}
         <script
           type="application/ld+json"
@@ -74,21 +74,19 @@ export default async function LessonPage({ params }: LessonPageProps) {
           }}
         />
         
-        <div className="flex min-h-screen">
-          <ChapterNav
-            chapters={chapters}
-            currentChapter={chapterId}
-            currentLesson={lessonId}
-          />
-          
-          <div className="flex-1 overflow-auto">
-            <div className="ka-main">
-              <ProgressTracker chapterId={chapterId} lessonId={lessonId} />
-              <LessonContent lesson={lesson} />
-            </div>
+        <ChapterNav
+          chapters={chapters}
+          currentChapter={chapterId}
+          currentLesson={lessonId}
+        />
+        
+        <div className="flex-1 overflow-auto">
+          <div className="ka-main">
+            <ProgressTracker chapterId={chapterId} lessonId={lessonId} />
+            <LessonContent lesson={lesson} />
           </div>
         </div>
-      </>
+      </div>
     );
   } catch (error) {
     notFound();

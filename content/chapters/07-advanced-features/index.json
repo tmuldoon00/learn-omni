@@ -6,75 +6,93 @@
   "lessons": [
     {
       "id": "01-advanced-dbt-integration",
-      "title": "Dynamic dbt Environments and Schema Testing",
-      "description": "Test dbt changes with dynamic schema swapping and environment-specific development",
-      "duration": "3 min",
-      "videoId": "yES0ijO3Co0",
+      "title": "Comprehensive dbt Integration and Workflows",
+      "description": "Bi-directional dbt integration with push/pull capabilities and seamless development workflows",
+      "duration": "7 min",
+      "videoId": "l_FQFzPWQYU",
       "order": 1,
-      "videoMinutes": 3
+      "videoMinutes": 7
+    },
+    {
+      "id": "01-model-ide-development",
+      "title": "Model IDE and Development Workflow",
+      "description": "Master the Model IDE for advanced semantic modeling and development workflows",
+      "duration": "20 min",
+      "videoId": "oytmsSdWV9o",
+      "order": 1,
+      "videoMinutes": 20
+    },
+    {
+      "id": "02-advanced-modeling-concepts",
+      "title": "Advanced Modeling and Performance",
+      "description": "Row-level security, caching policies, aggregate awareness, and branch management",
+      "duration": "25 min",
+      "videoId": "8Fhjv4cGe3I",
+      "order": 2,
+      "videoMinutes": 25
     },
     {
       "id": "02-dynamic-environments-development",
-      "title": "Enterprise Git Workflows and Pull Requests",
-      "description": "Advanced version control with pull requests, branch management, and model history",
-      "duration": "9 min",
-      "videoId": "VZgSkHd5C9E",
-      "order": 2,
-      "videoMinutes": 9
-    },
-    {
-      "id": "03-enterprise-git-workflows",
-      "title": "Advanced Branch Mode Development",
-      "description": "Enterprise development workflows with sophisticated branching and testing capabilities",
-      "duration": "4 min",
-      "videoId": "Yz6aKy_GF6c",
-      "order": 3,
-      "videoMinutes": 4
-    },
-    {
-      "id": "04-model-organization-topic-files",
-      "title": "Model IDE and Direct dbt Editing",
-      "description": "Create and edit dbt models directly from Omni with integrated development experience",
-      "duration": "5 min",
-      "videoId": "oytmsSdWV9o",
-      "order": 4,
-      "videoMinutes": 5
-    },
-    {
-      "id": "05-api-development-automation",
-      "title": "API Development and Model Automation",
-      "description": "Leverage model editing APIs for programmatic model management and automation",
-      "duration": "6 min",
-      "videoId": "gTZzyt1I9_w",
-      "order": 5,
-      "videoMinutes": 6
-    },
-    {
-      "id": "06-seamless-change-management",
-      "title": "Seamless Change Management and Content Validation",
-      "description": "Maintain content integrity through database changes with automated validation workflows",
+      "title": "Dynamic Environments and Development Workflows",
+      "description": "Test dbt changes with dynamic schema swapping and environment-specific development",
       "duration": "3 min",
-      "videoId": "LvhoOr3vQwY",
-      "order": 6,
+      "videoId": "yES0ijO3Co0",
+      "order": 2,
       "videoMinutes": 3
     },
     {
-      "id": "07-advanced-branch-mode",
-      "title": "Advanced View Organization in Topics",
-      "description": "Customize views within topics for specialized use cases and field definitions",
-      "duration": "14 min",
-      "videoId": "CTYR30-tKps",
-      "order": 7,
-      "videoMinutes": 14
+      "id": "03-security-governance",
+      "title": "Security and Development Lifecycle Controls",
+      "description": "Enterprise security, governance, and SDLC practices for safe data deployment",
+      "duration": "6 min",
+      "videoId": "CgbVv3wIimA",
+      "order": 3,
+      "videoMinutes": 6
     },
     {
-      "id": "08-model-ide-dbt-editing",
-      "title": "Snowflake Native App Integration",
-      "description": "Deploy the full Omni app within Snowflake alongside your database",
-      "duration": "6 min",
-      "videoId": "RSxX21T-CNg",
+      "id": "04-embedding-integration",
+      "title": "Embedding and External Integration",
+      "description": "Embed Omni dashboards and AI capabilities in external applications",
+      "duration": "22 min",
+      "videoId": "dQw4w9WgXcQ",
+      "order": 4,
+      "videoMinutes": 22
+    },
+    {
+      "id": "05-api-development",
+      "title": "API Development and Automation",
+      "description": "Leverage Omni APIs for custom integrations and automation workflows",
+      "duration": "7 min",
+      "videoId": "7yfFbkEBOVg",
+      "order": 5,
+      "videoMinutes": 7
+    },
+    {
+      "id": "06-dbt-git-integration",
+      "title": "dbt and Git Integration",
+      "description": "Advanced workflows with dbt integration and version control",
+      "duration": "12 min read",
+      "videoId": "l_FQFzPWQYU",
+      "order": 6,
+      "videoMinutes": 12
+    },
+    {
+      "id": "07-field-level-security",
+      "title": "Field-Level Security and Data Protection",
+      "description": "Implement granular column-level permissions for sensitive data protection",
+      "duration": "3 min",
+      "videoId": "fC9kPnQMdJY",
+      "order": 7,
+      "videoMinutes": 3
+    },
+    {
+      "id": "08-admin-user-impersonation",
+      "title": "Admin User Impersonation and Support Tools",
+      "description": "Advanced admin capabilities for user support and permissions debugging",
+      "duration": "2 min",
+      "videoId": "4ltIFnU0XMw",
       "order": 8,
-      "videoMinutes": 6
+      "videoMinutes": 2
     }
   ]
 }
