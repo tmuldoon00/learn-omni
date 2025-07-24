@@ -15,6 +15,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "LearnOmni.org - Master Omni Analytics",
   description: "Comprehensive course covering data analytics from basic concepts to advanced techniques using the Omni platform.",
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' }
+    ],
+    apple: { url: '/apple-touch-icon.svg', type: 'image/svg+xml' }
+  }
 };
 
 export default function RootLayout({
