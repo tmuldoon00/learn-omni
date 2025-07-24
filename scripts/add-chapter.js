@@ -89,7 +89,7 @@ Want to contribute to this chapter? Check out our [Contributing Guide](../../CON
 
 ---
 
-*This chapter is part of the LearnOmni open source course. [Contribute on GitHub →](https://github.com/yourusername/learnomni)*
+*This chapter is part of the LearnOmni open source course. [Contribute on GitHub →](https://github.com/tmuldoon00/learn-omni)*
 `;
 
     fs.writeFileSync(path.join(chapterPath, 'README.md'), readmeContent);

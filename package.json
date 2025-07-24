@@ -2,6 +2,14 @@
   "name": "learn-omni",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmuldoon00/learn-omni.git"
+  },
+  "homepage": "https://github.com/tmuldoon00/learn-omni",
+  "bugs": {
+    "url": "https://github.com/tmuldoon00/learn-omni/issues"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

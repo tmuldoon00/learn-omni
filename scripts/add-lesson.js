@@ -116,7 +116,7 @@ Continue your learning journey with the next lesson in this chapter.
 
 ---
 
-*Want to improve this lesson? [Contribute on GitHub →](https://github.com/yourusername/learnomni)*
+*Want to improve this lesson? [Contribute on GitHub →](https://github.com/tmuldoon00/learn-omni)*
 `;
 
     // Write lesson file
