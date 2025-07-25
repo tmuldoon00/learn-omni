@@ -6,6 +6,9 @@ import { ChapterNav } from '@/components/navigation/chapter-nav';
 import { LessonContent } from '@/components/lesson/lesson-content';
 import { ProgressTracker } from '@/components/lesson/progress-tracker';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 interface LessonPageProps {
   params: Promise<{
     chapterId: string;
@@ -16,11 +19,11 @@ interface LessonPageProps {
 // Generate SEO metadata for each lesson
 export async function generateMetadata({ params }: LessonPageProps): Promise<Metadata> {
   const { chapterId, lessonId } = await params;
-  
+
   try {
     const { lesson, chapter } = validateChapterAndLesson(chapterId, lessonId);
     const lessonMeta = lesson.metadata;
-    
+
     return generateSEOMetadata({
       title: `${lessonMeta.title} - ${chapter.title}`,
       description: `${lessonMeta.description} Learn about ${lessonMeta.title} in this ${lessonMeta.duration} video lesson from Chapter ${chapter.order}: ${chapter.title}.`,
@@ -37,7 +40,7 @@ export async function generateMetadata({ params }: LessonPageProps): Promise<Met
       ],
       publishedTime: new Date().toISOString(),
     });
-  } catch (error) {
+  } catch {
     return generateSEOMetadata({
       title: 'Lesson Not Found',
       noIndex: true,
@@ -47,15 +50,15 @@ export async function generateMetadata({ params }: LessonPageProps): Promise<Met
 
 export default async function LessonPage({ params }: LessonPageProps) {
   const { chapterId, lessonId } = await params;
-  
+
   try {
     const { lesson, chapter } = validateChapterAndLesson(chapterId, lessonId);
     const chapters = getAllChapters();
-    
+
     // Generate structured data for the lesson
     const lessonUrl = `/chapter/${chapterId}/lesson/${lessonId}`;
     const lessonStructuredData = generateLessonStructuredData(lesson.metadata, chapter, lessonUrl);
-    
+
     // Generate breadcrumb structured data
     const breadcrumbs = [
       { name: 'Home', url: '/' },
@@ -73,13 +76,13 @@ export default async function LessonPage({ params }: LessonPageProps) {
             __html: JSON.stringify([lessonStructuredData, breadcrumbStructuredData])
           }}
         />
-        
+
         <ChapterNav
           chapters={chapters}
           currentChapter={chapterId}
           currentLesson={lessonId}
         />
-        
+
         <div className="flex-1 overflow-auto">
           <div className="ka-main">
             <ProgressTracker chapterId={chapterId} lessonId={lessonId} />
@@ -88,19 +91,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
         </div>
       </div>
     );
-  } catch (error) {
+  } catch {
     notFound();
   }
 }
-
-export async function generateStaticParams() {
-  const chapters = getAllChapters();
-  return chapters.flatMap(chapter =>
-    chapter.lessons.map(lesson => ({
-      chapterId: chapter.id,
-      lessonId: lesson.id,
-    }))
-  );
-}
-
- 

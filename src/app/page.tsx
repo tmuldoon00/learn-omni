@@ -4,6 +4,9 @@ import { BookOpen, PlayCircle, Clock, CheckCircle2, ArrowRight, Users } from 'lu
 import { SearchBar } from '@/components/search/search-bar';
 import { formatDuration } from '@/lib/utils';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export default function HomePage() {
   const chapters = getAllChapters();
   const totalLessons = getAllLessonsCount();
@@ -20,8 +23,8 @@ export default function HomePage() {
             </div>
             <h1 className="text-xl font-bold text-gray-900">LearnOmni.org</h1>
           </div>
-          <Link 
-            href="https://github.com/yourusername/learnomni" 
+          <Link
+            href="https://github.com/yourusername/learnomni"
             className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
           >
             Open Source
@@ -36,10 +39,10 @@ export default function HomePage() {
             Master Omni Analytics
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Learn data analytics from the ground up. Comprehensive course covering everything 
+            Learn data analytics from the ground up. Comprehensive course covering everything
             from basic concepts to advanced techniques.
           </p>
-          
+
           {/* Course Stats */}
           <div className="flex items-center justify-center gap-8 mb-8 text-sm text-gray-500">
             <div className="flex items-center gap-2">
@@ -121,7 +124,7 @@ export default function HomePage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
                 "Data connection and modeling",
-                "AI-powered querying and analysis", 
+                "AI-powered querying and analysis",
                 "Advanced visualizations and dashboards",
                 "Embedded analytics and sharing",
                 "Enterprise-grade security and governance",
@@ -141,7 +144,7 @@ export default function HomePage() {
           <div className="bg-gradient-to-r from-blue-600 to-blue-600 rounded p-8 text-white text-center">
             <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Join thousands of learners mastering data analytics with Omni. 
+              Join thousands of learners mastering data analytics with Omni.
               Start your journey today with our comprehensive, hands-on course.
             </p>
             <div className="flex items-center justify-center gap-4">
@@ -185,4 +188,3 @@ export default function HomePage() {
     </div>
   );
 }
-

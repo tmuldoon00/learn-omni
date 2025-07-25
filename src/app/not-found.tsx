@@ -2,10 +2,13 @@ import Link from 'next/link';
 import { Home, Search, BookOpen, ArrowLeft, RotateCcw } from 'lucide-react';
 import { getAllChapters } from '@/lib/content';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 // Client component for the back button
 function BackButton() {
   'use client';
-  
+
   return (
     <button
       onClick={() => window.history.back()}
@@ -135,4 +138,4 @@ export default function NotFound() {
       </div>
     </div>
   );
-} 
+}
