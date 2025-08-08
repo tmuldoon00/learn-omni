@@ -7,6 +7,8 @@ import { formatDuration } from '@/lib/utils';
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
 
+const GITHUB_REPO_URL = 'https://github.com/tmuldoon00/learn-omni';
+
 export default function HomePage() {
   const chapters = getAllChapters();
   const totalLessons = getAllLessonsCount();
@@ -23,12 +25,20 @@ export default function HomePage() {
             </div>
             <h1 className="text-xl font-bold text-gray-900">LearnOmni.org</h1>
           </div>
-          <Link
-            href="https://github.com/yourusername/learnomni"
-            className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
-          >
-            Open Source
-          </Link>
+          <div className="flex items-center gap-5">
+            <Link
+              href="/chat"
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              AI Assistant
+            </Link>
+            <Link
+              href={GITHUB_REPO_URL}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Open Source
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -176,8 +186,11 @@ export default function HomePage() {
             <Link href="/contribute" className="text-blue-600 hover:text-blue-700 transition-colors">
               Contribute
             </Link>
-            <Link href="https://github.com/yourusername/learnomni" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href={GITHUB_REPO_URL} className="text-gray-600 hover:text-gray-900 transition-colors">
               GitHub
+            </Link>
+            <Link href="/chat" className="text-gray-600 hover:text-gray-900 transition-colors">
+              AI Assistant
             </Link>
             <Link href="/search" className="text-gray-600 hover:text-gray-900 transition-colors">
               Search

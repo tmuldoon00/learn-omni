@@ -38,7 +38,7 @@ export interface SearchableContent {
 }
 
 // Extract business concepts and technical terms from content
-function extractKeyTerms(content: string): {
+export function extractKeyTerms(content: string): {
   keywords: string[];
   concepts: string[];
   businessApplications: string[];
@@ -108,7 +108,7 @@ function extractKeyTerms(content: string): {
 }
 
 // Extract key concepts from content
-function extractConcepts(content: string): string[] {
+export function extractConcepts(content: string): string[] {
   const concepts: string[] = [];
   
   // Look for patterns like "### **Title**" or "## Title"
@@ -170,7 +170,7 @@ export function buildSearchIndex(): SearchableContent[] {
 }
 
 // Simple text similarity scoring with proper normalization
-function calculateTextSimilarity(query: string, text: string): number {
+export function calculateTextSimilarity(query: string, text: string): number {
   const queryWords = query.toLowerCase().split(' ').filter(word => word.length > 2);
   const textWords = text.toLowerCase().split(' ');
   
@@ -291,7 +291,7 @@ export function searchChapters(query: string, maxResults: number = 5): SearchRes
 }
 
 // Extract relevant content snippets
-function extractRelevantSnippets(content: string, query: string, maxSnippets: number = 3): string[] {
+export function extractRelevantSnippets(content: string, query: string, maxSnippets: number = 3): string[] {
   const queryWords = query.toLowerCase().split(' ').filter(word => word.length > 2);
   const sentences = content.split(/[.!?]+/).filter(sentence => sentence.trim().length > 20);
   

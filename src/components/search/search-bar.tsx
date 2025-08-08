@@ -86,11 +86,17 @@ export function SearchBar({ onSearch, placeholder = "Ask anything about Omni Ana
   const performSearch = async (searchQuery: string) => {
     setIsSearching(true);
     try {
-      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}&maxResults=5`);
-      const data: SearchResponse = await response.json();
-      
-      setResults(data.results);
-      setSuggestions(data.suggestions);
+      // Request course results shape to maintain backward compatibility with header quick search
+      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}&maxResults=5&type=course`);
+      const data: any = await response.json();
+
+      const nextResults: SearchResult[] = Array.isArray(data.results)
+        ? data.results
+        : (Array.isArray(data.course) ? data.course : []);
+      const nextSuggestions: string[] = Array.isArray(data.suggestions) ? data.suggestions : [];
+
+      setResults(nextResults);
+      setSuggestions(nextSuggestions);
       setShowResults(true);
       setSelectedIndex(-1);
       

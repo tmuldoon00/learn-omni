@@ -4,6 +4,7 @@ import { generateMetadata as generateSEOMetadata, generateCourseStructuredData }
 import { getAllChapters, getTotalCourseHours } from '@/lib/content';
 import { GA_MEASUREMENT_ID } from '@/lib/analytics';
 import "./globals.css";
+import ChatWidgetRoot from '@/components/chat/chat-widget-root';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -95,6 +96,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <ChatWidgetRoot />
       </body>
     </html>
   );
