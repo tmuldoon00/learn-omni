@@ -38,25 +38,91 @@ export default function ChatClient() {
     if (!forced) setInput('');
     setMessages((m) => [...m, { role: 'user', content: text }]);
     setLoading(true);
+    const ac = new AbortController();
+    const { signal } = ac;
+    (window as any).__chatAbortController = ac; // allow Stop button to cancel
     try {
-      const res = await fetch('/api/chat', {
+      const res = await fetch('/api/chat/stream', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text, conversationId: conversationIdRef.current ?? undefined }),
+        signal,
       });
-      const data = await res.json();
-      if (data?.conversationId && data.conversationId !== conversationIdRef.current) {
-        conversationIdRef.current = data.conversationId;
-        localStorage.setItem('chatConversationId', data.conversationId);
+      let assistantText = '';
+      let assistantCitations: Citation[] = [];
+      setMessages((m) => [...m, { role: 'assistant', content: '' }]);
+
+      if (res.body && 'getReader' in res.body) {
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value, { stream: true });
+          for (const line of chunk.split('\n\n')) {
+            const trimmed = line.trim();
+            if (!trimmed.startsWith('data:')) continue;
+            const json = JSON.parse(trimmed.slice(5).trim());
+            if (json.type === 'token') {
+              assistantText += json.value ?? '';
+              setMessages((m) => {
+                const copy = [...m];
+                const i = copy.findIndex((msg, idx) => idx === copy.length - 1 && msg.role === 'assistant');
+                if (i >= 0) copy[i] = { ...copy[i], content: assistantText } as any;
+                return copy;
+              });
+            } else if (json.type === 'done') {
+              if (json.conversationId && json.conversationId !== conversationIdRef.current) {
+                conversationIdRef.current = json.conversationId;
+                localStorage.setItem('chatConversationId', json.conversationId);
+              }
+              if (Array.isArray(json.citations)) {
+                assistantCitations = json.citations.slice(0, 5).map((c: any) => {
+                  const label: string = c.filename || c.file_id;
+                  const slug = label ? labelToSlug(label) : null;
+                  return slug ? { label, href: `/docs/${slug}` } : { label };
+                });
+              }
+            } else if (json.type === 'error') {
+              console.error('chat error', json.error);
+              throw new Error(json.error || 'server error');
+            } else if (json.type === 'status' && json.threadId && json.runId) {
+              // can be used for debugging
+            }
+          }
+        }
+      } else {
+        // Fallback: non-streamed body (text)
+        const textBody = await res.text();
+        for (const raw of textBody.split('\n\n')) {
+          const trimmed = raw.trim();
+          if (!trimmed.startsWith('data:')) continue;
+          const json = JSON.parse(trimmed.slice(5).trim());
+          if (json.type === 'token') assistantText += json.value ?? '';
+          if (json.type === 'error') throw new Error(json.error || 'server error');
+          if (json.type === 'done' && Array.isArray(json.citations)) {
+            assistantCitations = json.citations.slice(0, 5).map((c: any) => {
+              const label: string = c.filename || c.file_id;
+              const slug = label ? labelToSlug(label) : null;
+              return slug ? { label, href: `/docs/${slug}` } : { label };
+            });
+          }
+        }
+        setMessages((m) => {
+          const copy = [...m];
+          const i = copy.findIndex((msg, idx) => idx === copy.length - 1 && msg.role === 'assistant');
+          if (i >= 0) copy[i] = { ...copy[i], content: assistantText } as any;
+          return copy;
+        });
       }
-      const answer: string = data?.answer ?? '(no answer)';
-      const citationsRaw = Array.isArray(data?.citations) ? data.citations : [];
-      const citations: Citation[] = citationsRaw.slice(0, 5).map((c: any) => {
-        const label: string = c.filename || c.file_id;
-        const slug = label ? labelToSlug(label) : null;
-        return slug ? { label, href: `/docs/${slug}` } : { label };
-      });
-      setMessages((m) => [...m, { role: 'assistant', content: answer, citations }]);
+      if (assistantCitations.length > 0) {
+        setMessages((m) => {
+          const copy = [...m];
+          const i = copy.findIndex((msg, idx) => idx === copy.length - 1 && msg.role === 'assistant');
+          if (i >= 0) copy[i] = { ...copy[i], citations: assistantCitations } as any;
+          return copy;
+        });
+      }
     } catch (e) {
       setMessages((m) => [...m, { role: 'assistant', content: 'Sorry, something went wrong.' }]);
     } finally {
@@ -98,7 +164,16 @@ export default function ChatClient() {
                   'inline-block rounded px-3 py-2 max-w-full prose prose-sm prose-slate ' +
                   (m.role === 'user' ? 'bg-sky-50 text-sky-900' : 'bg-gray-50 text-gray-900')
                 }>
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{m.content}</ReactMarkdown>
+                  {m.role === 'assistant' && m.content.length === 0 ? (
+                    <div className="flex items-center gap-2">
+                      <span className="inline-block h-2 w-2 rounded-full bg-gray-300 animate-pulse"></span>
+                      <span className="inline-block h-2 w-2 rounded-full bg-gray-300 animate-pulse [animation-delay:150ms]"></span>
+                      <span className="inline-block h-2 w-2 rounded-full bg-gray-300 animate-pulse [animation-delay:300ms]"></span>
+                      <span className="text-xs text-gray-400 ml-1">Thinking…</span>
+                    </div>
+                  ) : (
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{m.content}</ReactMarkdown>
+                  )}
                 </div>
                 {m.role === 'assistant' && m.citations && m.citations.length > 0 && (
                   <div className="mt-1 flex flex-wrap gap-2">
@@ -125,9 +200,20 @@ export default function ChatClient() {
           onKeyDown={onKeyDown}
           disabled={loading}
         />
-        <button className="border rounded px-3 py-2" onClick={() => void sendMessage()} disabled={loading}>
-          {loading ? 'Sending…' : 'Send'}
-        </button>
+        {loading ? (
+          <button
+            className="border rounded px-3 py-2"
+            onClick={() => {
+              try { (window as any).__chatAbortController?.abort(); } catch {}
+            }}
+          >
+            Stop
+          </button>
+        ) : (
+          <button className="border rounded px-3 py-2" onClick={() => void sendMessage()}>
+            Send
+          </button>
+        )}
       </div>
     </div>
   );

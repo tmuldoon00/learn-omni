@@ -1,6 +1,7 @@
 import OpenAI from 'openai';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 type ChatRequest = {
   message: string;
@@ -27,55 +28,42 @@ export async function POST(req: Request) {
       return new Response(readable, sseHeaders());
     }
 
+    // Simplest, doc-aligned approach: Responses API with File Search (no Assistants/Threads)
     const client = new OpenAI({ apiKey });
-    const assistantsApi = client.beta?.assistants;
-    const threadsApi = client.beta?.threads;
-    if (!assistantsApi || !threadsApi) {
-      await sendEvent(writer, { type: 'error', error: 'Assistants API unavailable' });
-      writer.close();
-      return new Response(readable, sseHeaders());
+    const keepalive = setInterval(() => { void sendEvent(writer, { type: 'status', value: 'working' }); }, 2000);
+    let res: any;
+    try {
+      res = await client.responses.create({
+        model: 'gpt-4.1-mini',
+        input: body.message,
+        tools: [{ type: 'file_search' }],
+        tool_choice: 'auto',
+        tool_resources: { file_search: { vector_store_ids: [vectorStoreId] } },
+      });
+    } catch (e: any) {
+      // Fallback without file_search so the user still sees an answer
+      await sendEvent(writer, { type: 'status', value: 'fallback' });
+      try {
+        res = await client.responses.create({ model: 'gpt-4o-mini', input: body.message });
+      } catch (e2: any) {
+        await sendEvent(writer, { type: 'error', error: e2?.message || e?.message || 'openai error' });
+        clearInterval(keepalive);
+        writer.close();
+        return new Response(readable, sseHeaders());
+      }
+    } finally {
+      clearInterval(keepalive);
     }
 
-    const threadId = body.conversationId || (await threadsApi.create({})).id;
-    const assistant = await assistantsApi.create({
-      name: 'LearnOmni Docs Assistant',
-      model: 'gpt-4.1',
-      tools: [{ type: 'file_search' }],
-      tool_resources: { file_search: { vector_store_ids: [vectorStoreId] } },
-      instructions: [
-        'Answer strictly from the documentation. Include concise citations when applicable. If not found, say so and suggest related topics.',
-      ].join('\n'),
-    });
-
-    await threadsApi.messages.create(threadId, { role: 'user', content: body.message });
-    const run = await threadsApi.runs.create(threadId, { assistant_id: assistant.id });
-
-    let sentText = '';
-    // Poll for updates and stream deltas
-    while (true) {
-      const status = await threadsApi.runs.retrieve(threadId, run.id);
-      const messages = await threadsApi.messages.list(threadId, { limit: 1, order: 'desc' });
-      const assistantMsg = messages.data.find((m) => m.role === 'assistant');
-      if (assistantMsg) {
-        const full = extractText(assistantMsg) || '';
-        if (full.length > sentText.length) {
-          const delta = full.slice(sentText.length);
-          sentText = full;
-          await sendEvent(writer, { type: 'token', value: delta });
-        }
-      }
-
-      if (status.status === 'completed' || status.status === 'failed' || status.status === 'cancelled' || status.status === 'expired') {
-        const citations = extractCitations(assistantMsg);
-        await sendEvent(writer, { type: 'done', conversationId: threadId, citations });
-        break;
-      }
-
-      await wait(600);
+    const text = extractResponseText(res) || '';
+    for (let i = 0; i < text.length; i += 40) {
+      await sendEvent(writer, { type: 'token', value: text.slice(i, i + 40) });
+      await wait(25);
     }
-
-    try { await assistantsApi.del(assistant.id); } catch {}
+    const citations = extractCitationsFromResponse(res);
+    await sendEvent(writer, { type: 'done', conversationId: undefined, citations });
   } catch (err: any) {
+    console.error('chat stream error', err);
     await sendEvent(writer, { type: 'error', error: err?.message || 'unknown' });
   } finally {
     writer.close();
@@ -125,5 +113,53 @@ function extractCitations(message: any): { file_id: string }[] {
 }
 
 function wait(ms: number) { return new Promise((r) => setTimeout(r, ms)); }
+
+// Best-effort extraction of file citations from Responses API result shape
+function extractCitationsFromResponse(res: any): { file_id: string }[] {
+  const out: { file_id: string }[] = [];
+  try {
+    const outputs = res?.output ?? res?.response?.output ?? [];
+    for (const o of outputs) {
+      const content = o?.content ?? [];
+      for (const part of content) {
+        if (part?.type === 'output_text' && part?.output_text?.annotations?.length) {
+          for (const ann of part.output_text.annotations) {
+            const fileId = ann?.file_citation?.file_id || ann?.file_path?.file_id || ann?.file_id;
+            if (fileId) out.push({ file_id: String(fileId) });
+          }
+        }
+        if (part?.type === 'text' && part?.text?.annotations?.length) {
+          for (const ann of part.text.annotations) {
+            const fileId = ann?.file_citation?.file_id || ann?.file_path?.file_id || ann?.file_id;
+            if (fileId) out.push({ file_id: String(fileId) });
+          }
+        }
+      }
+    }
+  } catch {}
+  return out;
+}
+
+function extractResponseText(res: any): string {
+  try {
+    const outputs = res?.output ?? res?.response?.output ?? [];
+    let out = '';
+    for (const o of outputs) {
+      const content = o?.content ?? [];
+      for (const part of content) {
+        if (part?.type === 'output_text' && typeof part?.output_text === 'string') {
+          out += part.output_text;
+        } else if (part?.type === 'text' && typeof part?.text === 'string') {
+          out += part.text;
+        } else if (part?.type === 'output_text' && part?.output_text?.value) {
+          out += String(part.output_text.value);
+        }
+      }
+    }
+    return out;
+  } catch {
+    return '';
+  }
+}
 
 

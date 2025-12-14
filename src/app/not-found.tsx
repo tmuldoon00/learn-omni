@@ -1,24 +1,10 @@
 import Link from 'next/link';
-import { Home, Search, BookOpen, ArrowLeft, RotateCcw } from 'lucide-react';
+import { Home, Search, BookOpen, RotateCcw } from 'lucide-react';
 import { getAllChapters } from '@/lib/content';
+import BackButton from '@/components/not-found/back-button';
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
-
-// Client component for the back button
-function BackButton() {
-  'use client';
-
-  return (
-    <button
-      onClick={() => window.history.back()}
-      className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
-    >
-      <ArrowLeft className="w-4 h-4" />
-      Go back to previous page
-    </button>
-  );
-}
 
 export default function NotFound() {
   const chapters = getAllChapters();

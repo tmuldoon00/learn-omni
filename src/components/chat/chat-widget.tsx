@@ -26,48 +26,81 @@ export function ChatWidget() {
     setInput('');
     setMessages((m) => [...m, { role: 'user', content: text }]);
     setLoading(true);
+    const ac = new AbortController();
+    const { signal } = ac;
+    (window as any).__chatWidgetAbortController = ac;
     try {
       const res = await fetch('/api/chat/stream', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text, conversationId: conversationIdRef.current ?? undefined }),
+        signal,
       });
-      if (!res.body) throw new Error('No stream');
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
       let assistantText = '';
       let assistantCitations: Citation[] = [];
       setMessages((m) => [...m, { role: 'assistant', content: '' }]);
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        const chunk = decoder.decode(value, { stream: true });
-        for (const line of chunk.split('\n\n')) {
-          const trimmed = line.trim();
-          if (!trimmed.startsWith('data:')) continue;
-          const json = JSON.parse(trimmed.slice(5).trim());
-          if (json.type === 'token') {
-            assistantText += json.value ?? '';
-            setMessages((m) => {
-              const copy = [...m];
-              const idx = copy.findIndex((msg, i) => i === copy.length - 1 && msg.role === 'assistant');
-              if (idx >= 0) copy[idx] = { ...copy[idx], content: assistantText } as any;
-              return copy;
-            });
-          } else if (json.type === 'done') {
-            if (json.conversationId && json.conversationId !== conversationIdRef.current) {
-              conversationIdRef.current = json.conversationId;
-              localStorage.setItem('chatConversationId', json.conversationId);
-            }
-            if (Array.isArray(json.citations)) {
-              assistantCitations = json.citations.slice(0, 4).map((c: any) => {
-                const label: string = c.filename || c.file_id;
-                const slug = label ? safeSlug(label) : null;
-                return slug ? { label, href: `/docs/${slug}` } : { label };
+
+      if (res.body && 'getReader' in res.body) {
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value, { stream: true });
+          for (const line of chunk.split('\n\n')) {
+            const trimmed = line.trim();
+            if (!trimmed.startsWith('data:')) continue;
+            const json = JSON.parse(trimmed.slice(5).trim());
+            if (json.type === 'token') {
+              assistantText += json.value ?? '';
+              setMessages((m) => {
+                const copy = [...m];
+                const idx = copy.findIndex((msg, i) => i === copy.length - 1 && msg.role === 'assistant');
+                if (idx >= 0) copy[idx] = { ...copy[idx], content: assistantText } as any;
+                return copy;
               });
+            } else if (json.type === 'done') {
+              if (json.conversationId && json.conversationId !== conversationIdRef.current) {
+                conversationIdRef.current = json.conversationId;
+                localStorage.setItem('chatConversationId', json.conversationId);
+              }
+              if (Array.isArray(json.citations)) {
+                assistantCitations = json.citations.slice(0, 4).map((c: any) => {
+                  const label: string = c.filename || c.file_id;
+                  const slug = label ? safeSlug(label) : null;
+                  return slug ? { label, href: `/docs/${slug}` } : { label };
+                });
+              }
+            } else if (json.type === 'error') {
+              console.error('chat widget error', json.error);
+              throw new Error(json.error || 'server error');
+            } else if (json.type === 'status' && json.threadId && json.runId) {
+              // debug ids
             }
           }
         }
+      } else {
+        const textBody = await res.text();
+        for (const raw of textBody.split('\n\n')) {
+          const trimmed = raw.trim();
+          if (!trimmed.startsWith('data:')) continue;
+          const json = JSON.parse(trimmed.slice(5).trim());
+          if (json.type === 'token') assistantText += json.value ?? '';
+          if (json.type === 'error') throw new Error(json.error || 'server error');
+          if (json.type === 'done' && Array.isArray(json.citations)) {
+            assistantCitations = json.citations.slice(0, 4).map((c: any) => {
+              const label: string = c.filename || c.file_id;
+              const slug = label ? safeSlug(label) : null;
+              return slug ? { label, href: `/docs/${slug}` } : { label };
+            });
+          }
+        }
+        setMessages((m) => {
+          const copy = [...m];
+          const i = copy.findIndex((msg, idx) => idx === copy.length - 1 && msg.role === 'assistant');
+          if (i >= 0) copy[i] = { ...copy[i], content: assistantText } as any;
+          return copy;
+        });
       }
       if (assistantCitations.length > 0) {
         setMessages((m) => {
@@ -146,9 +179,18 @@ export function ChatWidget() {
               onKeyDown={onKeyDown}
               disabled={loading}
             />
-            <button className="border rounded px-3 py-1 text-sm" onClick={() => void sendMessage()} disabled={loading}>
-              {loading ? '...' : 'Send'}
-            </button>
+            {loading ? (
+              <button
+                className="border rounded px-3 py-1 text-sm"
+                onClick={() => { try { (window as any).__chatWidgetAbortController?.abort(); } catch {} }}
+              >
+                Stop
+              </button>
+            ) : (
+              <button className="border rounded px-3 py-1 text-sm" onClick={() => void sendMessage()}>
+                Send
+              </button>
+            )}
           </div>
         </div>
       )}
