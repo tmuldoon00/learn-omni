@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     
     // Use the Responses API with file_search
     const response = await client.responses.create({
-      model: 'gpt-4.1',
+      model: 'gpt-4.1-nano-2025-04-14',
       input: body.message,
       tools: [
         {
