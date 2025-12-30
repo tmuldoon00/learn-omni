@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     try {
       console.log('[CHAT] Creating response with vector store:', vectorStoreId);
       res = await client.responses.create({
-        model: 'gpt-4.1',
+        model: 'gpt-4.1-nano-2025-04-14',
         input: body.message,
         tools: [
           { 

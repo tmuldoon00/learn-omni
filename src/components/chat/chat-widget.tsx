@@ -65,7 +65,7 @@ export function ChatWidget() {
                 localStorage.setItem('chatConversationId', json.conversationId);
               }
               if (Array.isArray(json.citations)) {
-                assistantCitations = json.citations.slice(0, 4).map((c: any) => {
+                assistantCitations = json.citations.slice(0, 5).map((c: any) => {
                   const label: string = c.filename || c.file_id;
                   const slug = label ? safeSlug(label) : null;
                   return slug ? { label, href: `/docs/${slug}` } : { label };
@@ -88,7 +88,7 @@ export function ChatWidget() {
           if (json.type === 'token') assistantText += json.value ?? '';
           if (json.type === 'error') throw new Error(json.error || 'server error');
           if (json.type === 'done' && Array.isArray(json.citations)) {
-            assistantCitations = json.citations.slice(0, 4).map((c: any) => {
+            assistantCitations = json.citations.slice(0, 5).map((c: any) => {
               const label: string = c.filename || c.file_id;
               const slug = label ? safeSlug(label) : null;
               return slug ? { label, href: `/docs/${slug}` } : { label };
@@ -147,12 +147,12 @@ export function ChatWidget() {
           <div className="flex-1 overflow-y-auto p-2">
             {messages.length === 0 ? (
               <div className="p-2">
-                <div className="text-gray-500 text-sm mb-3">Ask a question about Omni…</div>
+                <div className="text-gray-500 text-sm mb-3">Ask a question about the docs…</div>
                 <div className="flex flex-col gap-1.5">
                   {[
-                    'How do I create filters?',
-                    'How does embedding work?',
-                    'What are access filters?',
+                    'How do I do a filter in Omni?',
+                    'How do I embed dashboards externally?',
+                    'How do permissions and user groups work?',
                   ].map((question) => (
                     <button
                       key={question}
@@ -170,10 +170,10 @@ export function ChatWidget() {
                   <div key={idx} className={m.role === 'user' ? 'text-right' : 'text-left'}>
                     <div className={'inline-block rounded px-2 py-1 prose prose-sm prose-slate max-w-[90%] ' + (m.role === 'user' ? 'bg-sky-50 text-sky-900' : 'bg-gray-50 text-gray-900')}>
                       {m.role === 'assistant' && m.content.length === 0 ? (
-                        <div className="flex items-center gap-1.5 py-1">
-                          <span className="inline-block h-1.5 w-1.5 rounded-full bg-gray-400 animate-pulse"></span>
-                          <span className="inline-block h-1.5 w-1.5 rounded-full bg-gray-400 animate-pulse [animation-delay:150ms]"></span>
-                          <span className="inline-block h-1.5 w-1.5 rounded-full bg-gray-400 animate-pulse [animation-delay:300ms]"></span>
+                        <div className="flex items-center gap-2">
+                          <span className="inline-block h-2 w-2 rounded-full bg-gray-300 animate-pulse"></span>
+                          <span className="inline-block h-2 w-2 rounded-full bg-gray-300 animate-pulse [animation-delay:150ms]"></span>
+                          <span className="inline-block h-2 w-2 rounded-full bg-gray-300 animate-pulse [animation-delay:300ms]"></span>
                           <span className="text-xs text-gray-400 ml-1">Thinking…</span>
                         </div>
                       ) : (
@@ -199,7 +199,7 @@ export function ChatWidget() {
           <div className="p-2 border-t flex gap-2">
             <input
               className="flex-1 border rounded px-2 py-1 text-sm"
-              placeholder="Type your question…"
+              placeholder="Ask about connections, embedding, permissions…"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={onKeyDown}
