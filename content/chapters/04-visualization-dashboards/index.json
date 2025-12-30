@@ -66,15 +66,6 @@
       "videoId": "sUknsrzDBiY",
       "order": 7,
       "videoMinutes": 7
-    },
-    {
-      "id": "08-text-to-visualization-ai",
-      "title": "AI-Powered Text-to-Visualization",
-      "description": "Create advanced custom visualizations using natural language with Vega-Lite",
-      "duration": "9 min",
-      "videoId": "U_UEBTUtnSc",
-      "order": 8,
-      "videoMinutes": 9
     }
   ]
 }
