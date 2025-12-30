@@ -20,10 +20,10 @@ export function ChatWidget() {
     conversationIdRef.current = localStorage.getItem('chatConversationId');
   }, []);
 
-  async function sendMessage() {
-    const text = input.trim();
+  async function sendMessage(forcedText?: string) {
+    const text = (forcedText ?? input).trim();
     if (!text) return;
-    setInput('');
+    if (!forcedText) setInput('');
     setMessages((m) => [...m, { role: 'user', content: text }]);
     setLoading(true);
     const ac = new AbortController();
@@ -146,13 +146,39 @@ export function ChatWidget() {
           </div>
           <div className="flex-1 overflow-y-auto p-2">
             {messages.length === 0 ? (
-              <div className="text-gray-500 text-sm p-2">Ask a question about the docs…</div>
+              <div className="p-2">
+                <div className="text-gray-500 text-sm mb-3">Ask a question about Omni…</div>
+                <div className="flex flex-col gap-1.5">
+                  {[
+                    'How do I create filters?',
+                    'How does embedding work?',
+                    'What are access filters?',
+                  ].map((question) => (
+                    <button
+                      key={question}
+                      className="text-left text-xs px-2 py-1.5 rounded border hover:bg-gray-50 text-gray-700"
+                      onClick={() => void sendMessage(question)}
+                    >
+                      {question}
+                    </button>
+                  ))}
+                </div>
+              </div>
             ) : (
               <div className="space-y-2">
                 {messages.map((m, idx) => (
                   <div key={idx} className={m.role === 'user' ? 'text-right' : 'text-left'}>
                     <div className={'inline-block rounded px-2 py-1 prose prose-sm prose-slate max-w-[90%] ' + (m.role === 'user' ? 'bg-sky-50 text-sky-900' : 'bg-gray-50 text-gray-900')}>
-                      <ReactMarkdown remarkPlugins={[remarkGfm]}>{m.content}</ReactMarkdown>
+                      {m.role === 'assistant' && m.content.length === 0 ? (
+                        <div className="flex items-center gap-1.5 py-1">
+                          <span className="inline-block h-1.5 w-1.5 rounded-full bg-gray-400 animate-pulse"></span>
+                          <span className="inline-block h-1.5 w-1.5 rounded-full bg-gray-400 animate-pulse [animation-delay:150ms]"></span>
+                          <span className="inline-block h-1.5 w-1.5 rounded-full bg-gray-400 animate-pulse [animation-delay:300ms]"></span>
+                          <span className="text-xs text-gray-400 ml-1">Thinking…</span>
+                        </div>
+                      ) : (
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{m.content}</ReactMarkdown>
+                      )}
                     </div>
                     {m.role === 'assistant' && m.citations && m.citations.length > 0 && (
                       <div className="mt-1 flex flex-wrap gap-1">
