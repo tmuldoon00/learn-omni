@@ -12,7 +12,7 @@ interface SEOProps {
   author?: string;
 }
 
-const siteUrl = "https://learn-omni.vercel.app";
+export const siteUrl = "https://www.learnomni.org";
 const siteName = "LearnOmni.org";
 const defaultDescription = "Learn data analytics with our comprehensive 10.2-hour course covering Omni platform features, AI-powered querying, dashboard creation, and real-world applications.";
 

@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
 import { getAllChapters } from '@/lib/content';
+import { siteUrl } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://learn-omni.vercel.app';
+  const baseUrl = siteUrl;
   const chapters = getAllChapters();
   
   // Static pages
