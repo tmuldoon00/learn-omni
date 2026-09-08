@@ -29,7 +29,7 @@ A modern e-learning platform built with Next.js 15, featuring comprehensive anal
 - **Static Site Generation** for optimal performance and SEO
 
 ### 📱 User Experience
-- **Mobile-First Design** that works perfectly on all devices
+- **Responsive Design** — the lesson layout stacks the course nav above the lesson on phones
 - **Progress Tracking** with localStorage-based lesson completion
 - **YouTube Integration** with responsive video embedding
 - **Clean UI** following accessibility and usability best practices

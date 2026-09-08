@@ -17,18 +17,35 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
   
+  /* Full width when the lesson layout stacks; the fixed rail only above md. */
   .ka-sidebar {
     background-color: white;
-    border-right: 1px solid #e5e7eb;
-    width: 20rem;
-    box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #e5e7eb;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
-  
+
+  @media (min-width: 768px) {
+    .ka-sidebar {
+      border-bottom: none;
+      border-right: 1px solid #e5e7eb;
+      width: 20rem;
+      flex-shrink: 0;
+      box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05);
+    }
+  }
+
   .ka-main {
     background-color: white;
     max-width: 56rem;
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .ka-main {
+      padding: 2rem 1.5rem;
+    }
   }
 
   /* Color utilities */

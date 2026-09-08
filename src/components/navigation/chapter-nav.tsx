@@ -82,7 +82,7 @@ export function ChapterNav({ chapters, currentChapter, currentLesson }: ChapterN
   };
 
   return (
-    <div className="ka-sidebar h-screen overflow-y-auto">
+    <div className="ka-sidebar max-h-[40vh] md:max-h-none md:h-screen overflow-y-auto">
       <div className="p-4">
         {/* Header - Improved alignment */}
         <div className="mb-6">

@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://learn-omni.vercel.app/sitemap.xml
+Sitemap: https://www.learnomni.org/sitemap.xml
 
 # Search engines - crawl everything
 User-agent: Googlebot
