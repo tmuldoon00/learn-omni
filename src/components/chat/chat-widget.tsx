@@ -137,7 +137,7 @@ export function ChatWidget() {
 
       {/* Panel */}
       {open && (
-        <div className="fixed bottom-4 right-4 z-50 w-[min(92vw,380px)] h-[520px] bg-white border rounded shadow-xl flex flex-col">
+        <div className="fixed bottom-4 right-4 z-50 w-[min(92vw,380px)] h-[min(520px,calc(100dvh-2rem))] bg-white border rounded shadow-xl flex flex-col">
           <div className="flex items-center justify-between p-2 border-b">
             <div className="text-sm font-medium">LearnOmni Assistant</div>
             <button aria-label="Close" className="p-1 rounded hover:bg-gray-50" onClick={() => setOpen(false)}>
@@ -198,7 +198,7 @@ export function ChatWidget() {
           </div>
           <div className="p-2 border-t flex gap-2">
             <input
-              className="flex-1 border rounded px-2 py-1 text-sm"
+              className="flex-1 border rounded px-2 py-1 text-base sm:text-sm"
               placeholder="Ask about connections, embedding, permissions…"
               value={input}
               onChange={(e) => setInput(e.target.value)}
