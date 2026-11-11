@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     const apiKey = process.env.OPENAI_API_KEY;
     const vectorStoreId = process.env.OPENAI_VECTOR_STORE_ID;
     if (!apiKey || !vectorStoreId) {
-      return Response.json({ error: 'Server misconfiguration: missing OPENAI_API_KEY or OPENAI_VECTOR_STORE_ID' }, { status: 500 });
+      return Response.json({ error: 'Server misconfiguration' }, { status: 500 });
     }
 
     const client = new OpenAI({ apiKey });
@@ -74,8 +74,8 @@ export async function POST(req: Request) {
     });
   } catch (err: any) {
     console.error('[CHAT] Error:', err);
-    const detail = err?.response?.data ?? err?.message ?? 'Unknown error';
-    return Response.json({ error: detail }, { status: 500 });
+    // Keep upstream error text in server logs only: OpenAI auth errors echo part of the key.
+    return Response.json({ error: 'The assistant is unavailable. Try again later.' }, { status: 500 });
   }
 }
 

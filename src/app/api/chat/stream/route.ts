@@ -57,7 +57,7 @@ export async function POST(req: Request) {
         res = await client.responses.create({ model: 'gpt-4o-mini', input: body.message });
       } catch (e2: any) {
         console.error('[CHAT] Fallback also failed:', e2);
-        await sendEvent(writer, { type: 'error', error: e2?.message || e?.message || 'openai error' });
+        await sendEvent(writer, { type: 'error', error: 'The assistant is unavailable. Try again later.' });
         clearInterval(keepalive);
         writer.close();
         return new Response(readable, sseHeaders());
@@ -84,7 +84,7 @@ export async function POST(req: Request) {
       }
     } catch (err: any) {
       console.error('chat stream error', err);
-      await sendEvent(writer, { type: 'error', error: err?.message || 'unknown' });
+      await sendEvent(writer, { type: 'error', error: 'The assistant is unavailable. Try again later.' });
     } finally {
       writer.close();
     }
