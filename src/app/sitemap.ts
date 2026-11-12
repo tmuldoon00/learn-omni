@@ -22,14 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Chapter pages
-  const chapterPages: MetadataRoute.Sitemap = chapters.map((chapter) => ({
-    url: `${baseUrl}/chapter/${chapter.id}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
-
   // Lesson pages  
   const lessonPages: MetadataRoute.Sitemap = chapters.flatMap((chapter) =>
     chapter.lessons.map((lesson) => ({
@@ -40,5 +32,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...staticPages, ...chapterPages, ...lessonPages];
+  return [...staticPages, ...lessonPages];
 } 

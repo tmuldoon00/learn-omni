@@ -23,7 +23,7 @@
       "videoMinutes": 24
     },
     {
-      "id": "03-mcp-server-business-applications",
+      "id": "03-sales-commissions-app",
       "title": "Sales Commission Tracking Application",
       "description": "Real-time commission system with spreadsheet functionality for sales teams",
       "duration": "4 min",
@@ -32,7 +32,7 @@
       "videoMinutes": 4
     },
     {
-      "id": "04-live-data-product-development",
+      "id": "02-sales-revenue-operations",
       "title": "Revenue Operations and Sales Analytics",
       "description": "Pipeline analysis, forecasting, and sales performance optimization workflows",
       "duration": "18 min",
@@ -41,7 +41,7 @@
       "videoMinutes": 18
     },
     {
-      "id": "05-enterprise-excel-calculations",
+      "id": "05-financial-operational-analytics",
       "title": "Financial and Operational Analytics",
       "description": "Cost analysis, usage optimization, and operational efficiency measurement",
       "duration": "6 min",
@@ -68,7 +68,7 @@
       "videoMinutes": 20
     },
     {
-      "id": "08-implementation-success-strategies",
+      "id": "06-implementation-roadmap",
       "title": "Implementation Success Strategies and ROI",
       "description": "Proven approaches for enterprise deployment, change management, and measuring business impact",
       "type": "text",
